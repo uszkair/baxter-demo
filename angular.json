@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Maya"
+    }
+  },
+  "defaultProject": "Maya",
+  "cli": {
+    "analytics": false
+  }
 }
