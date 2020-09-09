@@ -1,50 +1,32 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
-import {Router} from "@angular/router";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+const AUTH_API = 'http://localhost:8080/api/auth/';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private authClient = null;
 
+  constructor(private http: HttpClient) { }
 
-  public isAuthenticated = new BehaviorSubject<boolean>(false);
-
-
-  constructor(private router: Router) {
-
+  login(credentials): Observable<any> {
+    return this.http.post(AUTH_API + 'signin', {
+      username: credentials.username,
+      password: credentials.password
+    }, httpOptions);
   }
 
-
-  async checkAuthenticated() {
-    const authenticated = await this.authClient.session.exists();
-    this.isAuthenticated.next(authenticated);
-    return authenticated;
-  }
-
-
-  async login(username: string, password: string) {
-
-    const transaction = await this.authClient.signIn({username, password});
-
-    if (transaction.status !== 'SUCCESS') {
-      throw Error('We cannot handle the ' + transaction.status + ' status');
-
-    }
-
-    this.isAuthenticated.next(true);
-    this.authClient.session.setCookieAndRedirect(transaction.sessionToken);
-  }
-
-
-  async logout(redirect: string) {
-    try {
-      await this.authClient.signOut();
-      this.isAuthenticated.next(false);
-      this.router.navigate([redirect]);
-    } catch (err) {
-      console.error(err);
-    }
+  register(user): Observable<any> {
+    return this.http.post(AUTH_API + 'signup', {
+      username: user.username,
+      email: user.email,
+      password: user.password
+    }, httpOptions);
   }
 }
