@@ -22,7 +22,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { LogoutComponent } from './logout/logout.component';
 import { AdminComponent } from './secured/admin/admin.component';
 
 
@@ -31,7 +30,6 @@ import { AdminComponent } from './secured/admin/admin.component';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    LogoutComponent,
     AdminComponent
   ],
   imports: [
