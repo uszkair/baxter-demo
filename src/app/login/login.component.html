@@ -1,26 +1,23 @@
 <mat-card>
   <mat-card-content>
-    <form name="form" #f="ngForm" (ngSubmit)="f.form.valid && onSubmit()">
+    <form [formGroup]="form" #f="ngForm" (ngSubmit)="onSubmit()">
       <h2>Bejelentkezés</h2>
-      <mat-error *ngIf="loginInvalid">
-        The username and password were not recognised
+      <mat-error *ngIf="f.submitted && !this.authService.isLoggedIn">
+        Érvénytelen felhasználónév / jelszó
       </mat-error>
       <mat-form-field class="full-width-input">
-        <input matInput placeholder="Felhasznló név"  [(ngModel)]="form.username" name="username" required>
+        <input matInput placeholder="Felhasználó név" formControlName="username" required>
         <mat-error>
-          Please provide a valid email address
+          Kérem adjon meg érvényes felhasználónevet
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width-input">
-        <input matInput type="password" placeholder="Jelszó" [(ngModel)]="form.password" name="password" required>
+        <input matInput type="password" placeholder="Jelszó" formControlName="password" required>
         <mat-error>
-          Please provide a valid password
+          Kérem adjon meg érvényes jelszót
         </mat-error>
       </mat-form-field>
-      <button mat-raised-button color="primary">Login</button>
+      <button mat-raised-button color="primary">Bejelentkezés</button>
     </form>
   </mat-card-content>
 </mat-card>
-<div class="alert alert-success" *ngIf="isLoggedIn">
-  Logged in as {{ roles }}.
-</div>

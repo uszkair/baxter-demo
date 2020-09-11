@@ -1,24 +1,55 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {User} from './User';
+import {TokenStorageService} from '../token-storage.service';
+import {map} from 'rxjs/internal/operators';
+import {Router} from "@angular/router";
 
 const AUTH_API = 'http://localhost:8080/api/auth/';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders({'Content-Type': 'application/json'})
 };
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private currentUserSubject: BehaviorSubject<User>;
+  public currentUser: Observable<User>;
+  returnUrl: string;
 
-  constructor(private http: HttpClient) { }
 
-  login(credentials): Observable<any> {
-    return this.http.post(AUTH_API + 'signin', {
-      username: credentials.username,
-      password: credentials.password
-    }, httpOptions);
+  constructor(private http: HttpClient,
+              private router: Router,
+              private tokenStorageService: TokenStorageService) {
+    this.currentUserSubject = new BehaviorSubject<User>(this.tokenStorageService.getUser());
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
+
+  login(username, password) {
+    return this.http.post<any>(AUTH_API + 'signin', {username, password})
+      .pipe(map(data => {
+        this.tokenStorageService.saveToken(data.jwt);
+        this.tokenStorageService.saveUser(data);
+        this.currentUserSubject.next(data);
+        this.router.navigate(['/admin']);
+      }));
+  }
+
+  public get currentUserValue(): User {
+    return this.currentUserSubject.value;
+  }
+
+  get isLoggedIn(){
+    return this.currentUserValue != null;
+  }
+
+  logout() {
+    this.tokenStorageService.signOut();
+    this.currentUserSubject.next(null);
+    this.router.navigate(['/home']);
+    location.reload();
   }
 }

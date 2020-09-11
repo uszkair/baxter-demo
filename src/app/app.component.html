@@ -3,13 +3,13 @@
       <button mat-button routerLink="/"><mat-icon>home</mat-icon></button>
     </span>
   <div fxLayout="row" fxShow="false" fxShow.gt-sm>
-    <button mat-button routerLink="/login">
+    <button mat-button *ngIf="!this.authService.isLoggedIn" routerLink="/login">
       <mat-icon>power_settings_new</mat-icon>
-      Login
+      Bejelentkezés
     </button>
-    <button mat-button (click)="logout()">
+    <button mat-button *ngIf="this.authService.isLoggedIn" (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
-      Logout
+      Kijelentkezés
     </button>
   </div>
   <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
@@ -27,11 +27,11 @@
   </button>
   <button mat-menu-item routerLink="/login">
     <mat-icon>power_settings_new</mat-icon>
-    Login
+    Bejelentkezés
   </button>
   <button mat-menu-item (click)="logout()">
     <mat-icon>exit_to_app</mat-icon>
-    Logout
+    Kijelentkezés
   </button>
 </mat-menu>
 <router-outlet></router-outlet>

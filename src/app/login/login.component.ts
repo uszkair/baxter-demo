@@ -1,59 +1,35 @@
 import {Component, Input, OnInit, Output} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ActivatedRoute, Router} from "@angular/router";
-import {AuthService} from "../shared/services/auth/auth.service";
-import {TokenStorageService} from "../shared/services/token-storage.service";
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthService} from '../shared/services/auth/auth.service';
+import {TokenStorageService} from '../shared/services/token-storage.service';
 
 @Component({
-  selector: 'app-welcome',
+  selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
 
   form: any = {};
-  isLoggedIn = false;
-  isLoginFailed = false;
   roles: string[] = [];
 
-  public loginInvalid: boolean;
-  private formSubmitAttempt: boolean;
-  errorMessage = '';
-
-
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) {
+  constructor(private fb: FormBuilder,
+              public authService: AuthService) {
   }
 
   async ngOnInit() {
-    if (this.tokenStorage.getToken()) {
-      this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
-    }
+    this.form = this.fb.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
-  onSubmit() {
-
-    this.loginInvalid = false;
-    this.formSubmitAttempt = false;
-
-    try {
-      this.authService.login(this.form).subscribe(data => {
-          this.tokenStorage.saveToken(data.accessToken);
-          this.tokenStorage.saveUser(data);
-
-          this.isLoginFailed = false;
-          this.isLoggedIn = true;
-          this.roles = this.tokenStorage.getUser().roles;
-          this.reloadPage();
-        }
-      );
-    } catch (err) {
-      this.errorMessage = err.error.message;
-      this.isLoginFailed = true;
+  async onSubmit() {
+    if (this.form.valid) {
+        const username = this.form.get('username').value;
+        const password = this.form.get('password').value;
+        await this.authService.login(username, password).subscribe();
     }
-  }
-
-  reloadPage() {
-    window.location.reload();
   }
 }
