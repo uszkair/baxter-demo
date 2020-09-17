@@ -4,13 +4,9 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {User} from './User';
 import {TokenStorageService} from '../token-storage.service';
 import {map} from 'rxjs/internal/operators';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
-const AUTH_API = 'http://localhost:8080/api/auth/';
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
-};
+const AUTH_API_SIGN_IN = '/api/auth/signin';
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +25,12 @@ export class AuthService {
   }
 
   login(username, password) {
-    return this.http.post<any>(AUTH_API + 'signin', {username, password})
+    return this.http.post<any>(AUTH_API_SIGN_IN, {username, password})
       .pipe(map(data => {
         this.tokenStorageService.saveToken(data.jwt);
         this.tokenStorageService.saveUser(data);
         this.currentUserSubject.next(data);
-        this.router.navigate(['/admin']);
+        this.router.navigate(['/dashboard']);
       }));
   }
 

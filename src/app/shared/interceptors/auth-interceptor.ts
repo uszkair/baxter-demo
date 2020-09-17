@@ -2,9 +2,9 @@ import {HTTP_INTERCEPTORS, HttpEvent} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
 
-import {TokenStorageService} from '../services/token-storage.service';
 import {Observable} from 'rxjs/index';
 import {AuthService} from '../services/auth/auth.service';
+import {environment} from '../../../environments/environment';
 
 const TOKEN_HEADER_KEY = 'Authorization';
 
@@ -14,6 +14,7 @@ export class AuthInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
     // add authorization header with jwt token if available
     const currentUser = this.authenticationService.currentUserValue;
     if (currentUser && currentUser.jwt) {

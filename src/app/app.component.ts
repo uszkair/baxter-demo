@@ -7,7 +7,7 @@ import {AuthService} from "./shared/services/auth/auth.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent  implements OnInit {
+export class AppComponent implements OnInit {
 
   constructor(public authService: AuthService) { }
 

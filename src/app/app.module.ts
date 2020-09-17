@@ -1,12 +1,13 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {APP_INITIALIZER, NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
-import { MatToolbarModule,
+import {
+  MatToolbarModule,
   MatMenuModule,
   MatIconModule,
   MatButtonModule,
@@ -17,13 +18,16 @@ import { MatToolbarModule,
   MatCardModule,
   MatSlideToggleModule,
   MatSelectModule,
-  MatOptionModule} from '@angular/material';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {FlexLayoutModule} from "@angular/flex-layout";
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { AdminComponent } from './secured/admin/admin.component';
-import {AuthInterceptor} from "./shared/interceptors/auth-interceptor";
+  MatOptionModule
+} from '@angular/material';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {HomeComponent} from './home/home.component';
+import {LoginComponent} from './login/login.component';
+import {AdminComponent} from './secured/admin/admin.component';
+import {AuthInterceptor} from './shared/interceptors/auth-interceptor';
+import {DashboardComponent} from './secured/dashboard/dashboard.component';
+import {BasicHttpInterceptor} from "./shared/interceptors/basic-http.interceptor";
 
 
 @NgModule({
@@ -31,7 +35,8 @@ import {AuthInterceptor} from "./shared/interceptors/auth-interceptor";
     AppComponent,
     HomeComponent,
     LoginComponent,
-    AdminComponent
+    AdminComponent,
+    DashboardComponent
   ],
   imports: [
     HttpClientModule,
@@ -58,7 +63,14 @@ import {AuthInterceptor} from "./shared/interceptors/auth-interceptor";
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }],
+  },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: BasicHttpInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
