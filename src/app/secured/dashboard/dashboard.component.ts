@@ -10,12 +10,9 @@ import {House} from '../../models/House';
 })
 export class DashboardComponent implements OnInit {
 
-  result: Observable<House[]>;
-
-  constructor(public dashboardService: DashboardService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.result = this.dashboardService.loadAllHouses;
   }
 
 }

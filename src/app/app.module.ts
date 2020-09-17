@@ -28,6 +28,8 @@ import {AdminComponent} from './secured/admin/admin.component';
 import {AuthInterceptor} from './shared/interceptors/auth-interceptor';
 import {DashboardComponent} from './secured/dashboard/dashboard.component';
 import {BasicHttpInterceptor} from "./shared/interceptors/basic-http.interceptor";
+import { LeftSideNavComponent } from './secured/left-side-nav/left-side-nav.component';
+import { HouseListComponent } from './secured/house-list/house-list.component';
 
 
 @NgModule({
@@ -36,7 +38,12 @@ import {BasicHttpInterceptor} from "./shared/interceptors/basic-http.interceptor
     HomeComponent,
     LoginComponent,
     AdminComponent,
-    DashboardComponent
+    DashboardComponent,
+    LeftSideNavComponent,
+    HouseListComponent
+  ],
+  exports: [
+    MatTableModule
   ],
   imports: [
     HttpClientModule,
