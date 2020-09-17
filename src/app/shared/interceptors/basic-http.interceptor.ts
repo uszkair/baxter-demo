@@ -18,7 +18,8 @@ export class BasicHttpInterceptor implements HttpInterceptor {
 
     if (!request.headers.has('Content-Type')) {
       request = request.clone({
-        headers: request.headers.set('Content-Type', 'application/json')
+        headers: request.headers.set('Content-Type', 'application/json'),
+        url: `${'api'}${request.url}`
       });
     }
     return next.handle(request);

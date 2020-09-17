@@ -6,7 +6,7 @@ import {TokenStorageService} from '../token-storage.service';
 import {map} from 'rxjs/internal/operators';
 import {Router} from '@angular/router';
 
-const AUTH_API_SIGN_IN = '/api/auth/signin';
+const AUTH_API_SIGN_IN = '/auth/signin';
 
 @Injectable({
   providedIn: 'root'
