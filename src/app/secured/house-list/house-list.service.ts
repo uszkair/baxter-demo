@@ -15,7 +15,6 @@ export class HouseListService {
   }
 
   getData() {
-    console.log('JANI')
     return this.http.get<House[]>(GET_HOUSE_LIST);
   }
 }

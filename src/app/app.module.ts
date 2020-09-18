@@ -28,6 +28,9 @@ import {DashboardComponent} from './secured/dashboard/dashboard.component';
 import {BasicHttpInterceptor} from "./shared/interceptors/basic-http.interceptor";
 import { LeftSideNavComponent } from './secured/left-side-nav/left-side-nav.component';
 import { HouseListComponent } from './secured/house-list/house-list.component';
+import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import { NewHouseComponent } from './secured/new-house/new-house.component';
+import {MatStepperModule} from "@angular/material/stepper";
 
 
 @NgModule({
@@ -38,10 +41,8 @@ import { HouseListComponent } from './secured/house-list/house-list.component';
     AdminComponent,
     DashboardComponent,
     LeftSideNavComponent,
-    HouseListComponent
-  ],
-  exports: [
-    MatTableModule
+    HouseListComponent,
+    NewHouseComponent
   ],
   imports: [
     HttpClientModule,
@@ -62,6 +63,8 @@ import { HouseListComponent } from './secured/house-list/house-list.component';
     MatSlideToggleModule,
     MatSelectModule,
     MatOptionModule,
+    MatDialogModule,
+    MatStepperModule,
     MatProgressSpinnerModule
   ],
   providers: [{
