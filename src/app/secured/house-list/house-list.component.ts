@@ -31,7 +31,7 @@ export class HouseListComponent implements OnInit {
 
   openDialog() {
     const dialogRef = this.dialog.open(NewHouseComponent, {
-      width: '250px'
+      width: '100%'
     });
   }
 }

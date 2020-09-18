@@ -16,6 +16,9 @@ export class NewHouseComponent implements OnInit {
 
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  thirdFormGroup: FormGroup;
+  fourthFormGroup: FormGroup;
+
   local_data: any;
 
   constructor(private _formBuilder: FormBuilder,
@@ -23,12 +26,21 @@ export class NewHouseComponent implements OnInit {
               @Optional() @Inject(MAT_DIALOG_DATA) public data: House) {
     console.log(data);
     this.local_data = data;
-}
+  }
 
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      shortHouseName: ['', Validators.required],
+      houseName: ['', Validators.required],
+      postCode: ['', Validators.required],
+      city: ['', Validators.required],
+      strata: ['', Validators.required],
+      locationNr: ['', Validators.required],
+      taxNum: ['', Validators.required],
+      bankAccountNr: ['', Validators.required],
+      areaOwnerShip: ['', Validators.required],
+      dualAccounting: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required]
