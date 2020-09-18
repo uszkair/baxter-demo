@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HouseListService} from './house-list.service';
 import {House} from "../../models/House";
-import {MatTableDataSource} from "@angular/material";
+import { MatTableDataSource } from "@angular/material/table";
 
 @Component({
   selector: 'app-house-list',
