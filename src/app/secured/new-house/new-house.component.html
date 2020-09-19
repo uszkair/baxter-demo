@@ -3,7 +3,7 @@
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Ház adatok megadása</ng-template>
       <div fxLayout="row" fxLayoutGap="160px">
-        <div fxLayout="column">
+        <div fxLayout="column" fxLayoutGap="20px">
         <mat-form-field>
         <mat-label>Ház rövid neve (azonosító)</mat-label>
         <input matInput formControlName="shortHouseName" required>
@@ -25,7 +25,7 @@
         <input matInput formControlName="strata" required>
       </mat-form-field>
         </div>
-        <div fxLayout="column">
+        <div fxLayout="column" fxLayoutGap="20px">
         <mat-form-field>
         <mat-label>Helyrajzi szám</mat-label>
         <input matInput formControlName="locationNr" required>
@@ -56,15 +56,46 @@
   </mat-step>
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your address</ng-template>
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
+      <ng-template matStepLabel>Könyvelési adatok</ng-template>
+      <div fxLayout="row" fxLayoutGap="160px">
+        <div fxLayout="column" fxLayoutGap="20px">
+          <mat-form-field>
+            <mat-label>Könyvelés kezdő hónapja</mat-label>
+            <input matInput formControlName="accountancyStartDate" placeholder="Ex. 1 Main St, New York, NY"
+                   required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Csekkdíj</mat-label>
+            <input matInput formControlName="chequeFee" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Összegarányos csekkdíj</mat-label>
+            <input matInput formControlName="proportionalCheqFee">
+          </mat-form-field>
+        <mat-form-field>
+            <mat-label>Csekkdíj emelés hónapja</mat-label>
+            <input matInput formControlName="chequeFeeLiftingMonth" required>
+          </mat-form-field>
+        </div>
+        <div fxLayout="column" fxLayoutGap="20px">
+
+        <mat-form-field>
+            <mat-label>Emelt csekkdíj</mat-label>
+            <input matInput formControlName="raisedChequeFee" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Banki készpénzbefizetés díja</mat-label>
+            <input matInput formControlName="bankCachPaymentFee" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Csak folyamatos teljesítésű számlákat könyvel?</mat-label>
+            <input matInput formControlName="handledInvoice" required>
+          </mat-form-field>
+        </div>
+      </div>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperPrevious>Vissza</button>
+        <button mat-button matStepperNext>Tovább</button>
       </div>
     </form>
   </mat-step>

@@ -35,7 +35,7 @@ export class NewHouseComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       shortHouseName: ['', Validators.required],
       houseName: ['', Validators.required],
-      postCode: [''],
+      postCode: ['', Validators.required],
       city: ['', Validators.required],
       strata: ['', Validators.required],
       locationNr: ['', Validators.required],
@@ -45,7 +45,13 @@ export class NewHouseComponent implements OnInit {
       dualAccounting: ['', Validators.required],
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      accountancyStartDate: ['', Validators.required],
+      chequeFee: ['', Validators.required],
+      proportionalCheqFee: ['', Validators.required],
+      chequeFeeLiftingMonth: ['', Validators.required],
+      raisedChequeFee: ['', Validators.required],
+      bankCachPaymentFee: ['', Validators.required],
+      handledInvoice: ['', Validators.required],
     });
   }
 
