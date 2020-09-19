@@ -25,12 +25,13 @@ import {LoginComponent} from './login/login.component';
 import {AdminComponent} from './secured/admin/admin.component';
 import {AuthInterceptor} from './shared/interceptors/auth-interceptor';
 import {DashboardComponent} from './secured/dashboard/dashboard.component';
-import {BasicHttpInterceptor} from "./shared/interceptors/basic-http.interceptor";
+import {BasicHttpInterceptor} from './shared/interceptors/basic-http.interceptor';
 import { LeftSideNavComponent } from './secured/left-side-nav/left-side-nav.component';
 import { HouseListComponent } from './secured/house-list/house-list.component';
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
+import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { NewHouseComponent } from './secured/new-house/new-house.component';
-import {MatStepperModule} from "@angular/material/stepper";
+import {MatStepperModule} from '@angular/material/stepper';
+import {TextMaskModule} from 'angular2-text-mask';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import {MatStepperModule} from "@angular/material/stepper";
     MatOptionModule,
     MatDialogModule,
     MatStepperModule,
+    TextMaskModule,
     MatProgressSpinnerModule
   ],
   providers: [{

@@ -3,6 +3,7 @@ import {House} from '../../models/House';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+import {Patterns} from '../../shared/helpers/patterns';
 
 @Component({
   selector: 'app-new-house',
@@ -20,6 +21,7 @@ export class NewHouseComponent implements OnInit {
   fourthFormGroup: FormGroup;
 
   local_data: any;
+  postCodeMask = Patterns.POSTCODE_PATTERN;
 
   constructor(private _formBuilder: FormBuilder,
               public dialogRef: MatDialogRef<NewHouseComponent>,
@@ -33,7 +35,7 @@ export class NewHouseComponent implements OnInit {
     this.firstFormGroup = this._formBuilder.group({
       shortHouseName: ['', Validators.required],
       houseName: ['', Validators.required],
-      postCode: ['', Validators.required],
+      postCode: [''],
       city: ['', Validators.required],
       strata: ['', Validators.required],
       locationNr: ['', Validators.required],

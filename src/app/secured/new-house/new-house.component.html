@@ -1,9 +1,10 @@
 <mat-horizontal-stepper #stepper>
   <mat-step [stepControl]="firstFormGroup">
-
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Ház adatok megadása</ng-template>
-      <mat-form-field>
+      <div fxLayout="row" fxLayoutGap="160px">
+        <div fxLayout="column">
+        <mat-form-field>
         <mat-label>Ház rövid neve (azonosító)</mat-label>
         <input matInput formControlName="shortHouseName" required>
       </mat-form-field>
@@ -13,7 +14,7 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Irányítószám</mat-label>
-        <input matInput formControlName="postCode" required>
+        <input matInput [textMask]="{mask: postCodeMask}" formControlName="postCode">
       </mat-form-field>
       <mat-form-field>
         <mat-label>Város</mat-label>
@@ -23,7 +24,9 @@
         <mat-label>Utca, házszám</mat-label>
         <input matInput formControlName="strata" required>
       </mat-form-field>
-      <mat-form-field>
+        </div>
+        <div fxLayout="column">
+        <mat-form-field>
         <mat-label>Helyrajzi szám</mat-label>
         <input matInput formControlName="locationNr" required>
       </mat-form-field>
@@ -43,8 +46,10 @@
         <mat-label>Kettős könyvitel</mat-label>
         <input matInput formControlName="dualAccounting" required>
       </mat-form-field>
+        </div>
+      </div>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button matStepperNext>Tovább</button>
       </div>
     </form>
 
