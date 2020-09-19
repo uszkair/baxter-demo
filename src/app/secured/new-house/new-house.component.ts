@@ -4,6 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {Patterns} from '../../shared/helpers/patterns';
+import {NewHouseService} from "./new-house.service";
 
 @Component({
   selector: 'app-new-house',
@@ -25,7 +26,8 @@ export class NewHouseComponent implements OnInit {
 
   constructor(private _formBuilder: FormBuilder,
               public dialogRef: MatDialogRef<NewHouseComponent>,
-              @Optional() @Inject(MAT_DIALOG_DATA) public data: House) {
+              @Optional() @Inject(MAT_DIALOG_DATA) public data: House,
+              private newHouseService: NewHouseService) {
     console.log(data);
     this.local_data = data;
   }
@@ -67,5 +69,9 @@ export class NewHouseComponent implements OnInit {
     });
   }
 
+
+  save(){
+    this.newHouseService.save(this.firstFormGroup.getRawValue());
+  }
 
 }
