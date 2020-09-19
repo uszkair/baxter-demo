@@ -99,8 +99,71 @@
       </div>
     </form>
   </mat-step>
+
+  <mat-step [stepControl]="thirdFormGroup">
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Törzsek beállítása</ng-template>
+      <div fxLayout="row" fxLayoutGap="20px">
+      <div fxLayout="column" fxLayoutGap="20px">
+          <mat-form-field>
+            <mat-label>Vevőtörzs engedélyezése</mat-label>
+            <input matInput formControlName="enablingCustomerTrunk"
+                   required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Vevőtörzs címkezelés</mat-label>
+            <input matInput formControlName="customerTrunkAddressManagement" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Szállítótörzs engedélyezése</mat-label>
+            <input matInput formControlName="enablingCarrierTrunk">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Szállítótörzs címkezelés</mat-label>
+            <input matInput formControlName="supplierTrunkAddressManagement" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Áttekintésben legyen-e vevő/szállító név</mat-label>
+            <input matInput formControlName="overViewbuyerSupplier" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Vissza</button>
+        <button mat-button matStepperNext>Tovább</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="fourthFormGroup">
+    <form [formGroup]="fourthFormGroup">
+      <ng-template matStepLabel>Közösképviselő adatai</ng-template>
+      <div fxLayout="row" fxLayoutGap="20px">
+        <div fxLayout="column" fxLayoutGap="20px">
+          <mat-form-field>
+            <mat-label>Közösképviselő neve</mat-label>
+            <input matInput formControlName="delegatePersonName"
+                   required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Közösképviselő titulusa</mat-label>
+            <input matInput formControlName="delegatePersonTitle" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Közösképviselő telefonszáma</mat-label>
+            <input matInput formControlName="delegatePersonNamePhoneNr">
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <button mat-button matStepperPrevious>Vissza</button>
+        <button mat-button matStepperNext>Tovább</button>
+      </div>
+    </form>
+  </mat-step>
+
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
+    <ng-template matStepLabel>Kész</ng-template>
     <p>You are now done.</p>
     <div>
       <button mat-button matStepperPrevious>Back</button>

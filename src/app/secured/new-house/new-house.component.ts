@@ -53,6 +53,18 @@ export class NewHouseComponent implements OnInit {
       bankCachPaymentFee: ['', Validators.required],
       handledInvoice: ['', Validators.required],
     });
+    this.thirdFormGroup = this._formBuilder.group({
+      enablingCustomerTrunk: ['', Validators.required],
+      customerTrunkAddressManagement: ['', Validators.required],
+      enablingCarrierTrunk: ['', Validators.required],
+      supplierTrunkAddressManagement: ['', Validators.required],
+      overViewbuyerSupplier: ['', Validators.required]
+    });
+    this.fourthFormGroup = this._formBuilder.group({
+      delegatePersonName: ['', Validators.required],
+      delegatePersonTitle: ['', Validators.required],
+      delegatePersonNamePhoneNr: ['', Validators.required]
+    });
   }
 
 
