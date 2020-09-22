@@ -37,37 +37,50 @@ export class NewHouseComponent implements OnInit {
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      shortHouseName: ['', Validators.required],
+      shortHouseName: [null, Validators.required],
       houseName: ['Társasház', Validators.required],
-      postCode: ['', Validators.required],
-      city: ['', Validators.required],
-      strata: ['', Validators.required],
-      locationNr: ['', Validators.required],
-      taxNum: ['', Validators.required],
-      bankAccountNr: ['', Validators.required],
-      areaOwnerShip: ['', Validators.required],
-      dualAccounting: ['', Validators.required],
+      postCode: [null, Validators.required],
+      city: [null, Validators.required],
+      strata: [null, Validators.required],
+      locationNr: [null],
+      taxNum: [null],
+      bankAccountNr: [null, Validators.required],
+      areaOwnerShip: [null],
+      dualAccounting: [null],
     });
     this.secondFormGroup = this._formBuilder.group({
-      accountancyStartDate: ['', Validators.required],
-      chequeFee: ['', Validators.required],
-      proportionalCheqFee: ['', Validators.required],
-      chequeFeeLiftingMonth: ['', Validators.required],
-      raisedChequeFee: ['', Validators.required],
-      bankCachPaymentFee: ['', Validators.required],
-      handledInvoice: ['', Validators.required],
+      accountancyStartDate: ['Jan', Validators.required],
+      chequeFee: [0, Validators.required],
+      proportionalCheqFee: [0, Validators.required],
+      chequeFeeLiftingMonth: [null, Validators.required],
+      refusedChFeeLiftingMonth: [null],
+      raisedChequeFee: [0, Validators.required],
+      bankCachPaymentFee: [0, Validators.required],
+      handledInvoice: [null, Validators.required],
     });
     this.thirdFormGroup = this._formBuilder.group({
-      enablingCustomerTrunk: ['', Validators.required],
-      customerTrunkAddressManagement: ['', Validators.required],
-      enablingCarrierTrunk: ['', Validators.required],
-      supplierTrunkAddressManagement: ['', Validators.required],
-      overViewbuyerSupplier: ['', Validators.required]
+      enablingCustomerTrunk: [null],
+      customerTrunkAddressManagement: [null],
+      enablingCarrierTrunk: [null],
+      supplierTrunkAddressManagement: [null],
+      overViewbuyerSupplier: [null]
     });
     this.fourthFormGroup = this._formBuilder.group({
-      delegatePersonName: ['', Validators.required],
-      delegatePersonTitle: ['', Validators.required],
-      delegatePersonNamePhoneNr: ['', Validators.required]
+      delegatePersonName: [null, Validators.required],
+      delegatePersonTitle: [null],
+      delegatePersonNamePhoneNr: [null, Validators.required]
+    });
+
+
+    this.secondFormGroup.get('refusedChFeeLiftingMonth')
+      .valueChanges
+      .subscribe((value) => {
+        if(value){
+          this.secondFormGroup.get('chequeFeeLiftingMonth').patchValue(null);
+          this.secondFormGroup.get('chequeFeeLiftingMonth').disable();
+        }else {
+          this.secondFormGroup.get('chequeFeeLiftingMonth').enable();
+        }
     });
   }
 

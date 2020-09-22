@@ -56,35 +56,65 @@
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Könyvelési adatok</ng-template>
-      <div fxLayout="row" fxLayoutGap="160px">
-        <div fxLayout="column" fxLayoutGap="20px">
+      <div fxLayout="row" fxLayoutAlign="space-around none">
+        <div fxLayout="column">
           <mat-form-field>
             <mat-label>Könyvelés kezdő hónapja</mat-label>
-            <input matInput formControlName="accountancyStartDate" placeholder="Ex. 1 Main St, New York, NY"
-                   required>
+            <mat-select  formControlName="accountancyStartDate" disableRipple>
+              <mat-option value="jan">Január</mat-option>
+              <mat-option value="febr">Február</mat-option>
+              <mat-option value="marc">Március</mat-option>
+              <mat-option value="april">Április</mat-option>
+              <mat-option value="maj">Május</mat-option>
+              <mat-option value="jun">Június</mat-option>
+              <mat-option value="jul">Július</mat-option>
+              <mat-option value="aug">Augusztus</mat-option>
+              <mat-option value="szept">Szeptember</mat-option>
+              <mat-option value="okt">Október</mat-option>
+              <mat-option value="nov">November</mat-option>
+              <mat-option value="dec">December</mat-option>
+            </mat-select>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Csekkdíj</mat-label>
-            <input matInput formControlName="chequeFee" required>
+            <input matInput placeholder="0 esetén nincs" formControlName="chequeFee" required>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Összegarányos csekkdíj</mat-label>
-            <input matInput formControlName="proportionalCheqFee">
+            <input matInput placeholder="0 esetén nincs" formControlName="proportionalCheqFee">
           </mat-form-field>
+          <div fxLayout="row">
           <mat-form-field>
             <mat-label>Csekkdíj emelés hónapja</mat-label>
-            <input matInput formControlName="chequeFeeLiftingMonth" required>
+            <mat-select formControlName="chequeFeeLiftingMonth" disableRipple>
+              <mat-option value="jan">Január</mat-option>
+              <mat-option value="febr">Február</mat-option>
+              <mat-option value="marc">Március</mat-option>
+              <mat-option value="april">Április</mat-option>
+              <mat-option value="maj">Május</mat-option>
+              <mat-option value="jun">Június</mat-option>
+              <mat-option value="jul">Július</mat-option>
+              <mat-option value="aug">Augusztus</mat-option>
+              <mat-option value="szept">Szeptember</mat-option>
+              <mat-option value="okt">Október</mat-option>
+              <mat-option value="nov">November</mat-option>
+              <mat-option value="dec">December</mat-option>
+            </mat-select>
           </mat-form-field>
-        </div>
-        <div fxLayout="column" fxLayoutGap="20px">
 
+          <mat-checkbox  formControlName="refusedChFeeLiftingMonth">
+            <mat-label>Nincs emelés</mat-label>
+          </mat-checkbox>
+          </div>
+        </div>
+        <div fxLayout="column">
           <mat-form-field>
             <mat-label>Emelt csekkdíj</mat-label>
-            <input matInput formControlName="raisedChequeFee" required>
+            <input matInput placeholder="0 esetén nincs" formControlName="raisedChequeFee" required>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Banki készpénzbefizetés díja</mat-label>
-            <input matInput formControlName="bankCachPaymentFee" required>
+            <input matInput placeholder="0 esetén nincs" formControlName="bankCachPaymentFee" required>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Csak folyamatos teljesítésű számlákat könyvel?</mat-label>
@@ -104,27 +134,21 @@
       <ng-template matStepLabel>Törzsek beállítása</ng-template>
       <div fxLayout="row" fxLayoutGap="20px">
         <div fxLayout="column" fxLayoutGap="20px">
-          <mat-form-field>
+          <mat-checkbox  formControlName="enablingCustomerTrunk">
             <mat-label>Vevőtörzs engedélyezése</mat-label>
-            <input matInput formControlName="enablingCustomerTrunk"
-                   required>
-          </mat-form-field>
-          <mat-form-field>
+          </mat-checkbox>
+          <mat-checkbox  formControlName="customerTrunkAddressManagement">
             <mat-label>Vevőtörzs címkezelés</mat-label>
-            <input matInput formControlName="customerTrunkAddressManagement" required>
-          </mat-form-field>
-          <mat-form-field>
+          </mat-checkbox>
+          <mat-checkbox  formControlName="enablingCarrierTrunk">
             <mat-label>Szállítótörzs engedélyezése</mat-label>
-            <input matInput formControlName="enablingCarrierTrunk">
-          </mat-form-field>
-          <mat-form-field>
+          </mat-checkbox>
+          <mat-checkbox  formControlName="supplierTrunkAddressManagement">
             <mat-label>Szállítótörzs címkezelés</mat-label>
-            <input matInput formControlName="supplierTrunkAddressManagement" required>
-          </mat-form-field>
-          <mat-form-field>
+          </mat-checkbox>
+          <mat-checkbox  formControlName="overViewbuyerSupplier">
             <mat-label>Áttekintésben legyen-e vevő/szállító név</mat-label>
-            <input matInput formControlName="overViewbuyerSupplier" required>
-          </mat-form-field>
+          </mat-checkbox>
         </div>
       </div>
       <div>
