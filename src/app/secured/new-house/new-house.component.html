@@ -5,12 +5,12 @@
       <div fxLayout="row" fxLayoutGap="160px">
         <div fxLayout="column" fxLayoutGap="20px">
         <mat-form-field>
-        <mat-label>Ház rövid neve (azonosító)</mat-label>
-        <input matInput formControlName="shortHouseName" required>
+          <mat-label>Ház rövid neve (azonosító)</mat-label>
+          <input matInput formControlName="shortHouseName" maxlength="20" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Ház neve</mat-label>
-        <input matInput formControlName="houseName" required>
+        <input matInput formControlName="houseName" maxlength="20"  required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Irányítószám</mat-label>
@@ -18,29 +18,29 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Város</mat-label>
-        <input matInput formControlName="city" required>
+        <input matInput formControlName="city" maxlength="40" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Utca, házszám</mat-label>
-        <input matInput formControlName="strata" required>
+        <input matInput formControlName="strata" maxlength="100" required>
       </mat-form-field>
         </div>
         <div fxLayout="column" fxLayoutGap="20px">
         <mat-form-field>
         <mat-label>Helyrajzi szám</mat-label>
-        <input matInput formControlName="locationNr" required>
+        <input matInput formControlName="locationNr" maxlength="20" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Adószám</mat-label>
-        <input matInput formControlName="taxNum" required>
+        <input matInput [textMask]="{mask: taxNumPattern}" formControlName="taxNum" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Üzemelt.Banksz.Listán</mat-label>
-        <input matInput formControlName="bankAccountNr" required>
+        <input matInput formControlName="bankAccountNr" [textMask]="{mask: bankAccountPattern}" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Össz négyzetméter/tulajdoni hányad</mat-label>
-        <input matInput formControlName="areaOwnerShip" required>
+        <input matInput formControlName="areaOwnerShip" type="number" maxlength="7" minlength="1" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Kettős könyvitel</mat-label>

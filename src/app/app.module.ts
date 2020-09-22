@@ -32,6 +32,7 @@ import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import { NewHouseComponent } from './secured/new-house/new-house.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {TextMaskModule} from 'angular2-text-mask';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 
 @NgModule({
@@ -67,6 +68,7 @@ import {TextMaskModule} from 'angular2-text-mask';
     MatDialogModule,
     MatStepperModule,
     TextMaskModule,
+    MatCheckboxModule,
     MatProgressSpinnerModule
   ],
   providers: [{

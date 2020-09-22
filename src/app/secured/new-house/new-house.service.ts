@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/index';
 })
 export class NewHouseService {
 
-  static NEW_HOUSE_SAVE = '/houses/save';
+  static NEW_HOUSE_SAVE = '/houses';
 
   constructor(private http: HttpClient) {
 

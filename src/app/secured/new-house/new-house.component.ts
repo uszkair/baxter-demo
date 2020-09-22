@@ -22,7 +22,9 @@ export class NewHouseComponent implements OnInit {
   fourthFormGroup: FormGroup;
 
   local_data: any;
-  postCodeMask = Patterns.POSTCODE_PATTERN;
+  postCodeMask = Patterns.POSTCODE;
+  taxNumPattern = Patterns.TAXNUM;
+  bankAccountPattern = Patterns.BANKACCOUNT;
 
   constructor(private _formBuilder: FormBuilder,
               public dialogRef: MatDialogRef<NewHouseComponent>,
@@ -36,7 +38,7 @@ export class NewHouseComponent implements OnInit {
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       shortHouseName: ['', Validators.required],
-      houseName: ['', Validators.required],
+      houseName: ['Társasház', Validators.required],
       postCode: ['', Validators.required],
       city: ['', Validators.required],
       strata: ['', Validators.required],
@@ -70,8 +72,13 @@ export class NewHouseComponent implements OnInit {
   }
 
 
-  save(){
-    this.newHouseService.save(this.firstFormGroup.getRawValue());
+  save() {
+    const result = Object.assign({},
+      this.firstFormGroup.value,
+      this.secondFormGroup.value,
+      this.thirdFormGroup.value,
+      this.fourthFormGroup.value);
+    this.newHouseService.save(result).subscribe();
   }
 
 }
