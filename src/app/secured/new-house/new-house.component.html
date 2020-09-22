@@ -4,48 +4,47 @@
       <ng-template matStepLabel>Ház adatok megadása</ng-template>
       <div fxLayout="row" fxLayoutGap="160px">
         <div fxLayout="column" fxLayoutGap="20px">
-        <mat-form-field>
-          <mat-label>Ház rövid neve (azonosító)</mat-label>
-          <input matInput formControlName="shortHouseName" maxlength="20" required>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Ház neve</mat-label>
-        <input matInput formControlName="houseName" maxlength="20"  required>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Irányítószám</mat-label>
-        <input matInput [textMask]="{mask: postCodeMask}" formControlName="postCode">
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Város</mat-label>
-        <input matInput formControlName="city" maxlength="40" required>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Utca, házszám</mat-label>
-        <input matInput formControlName="strata" maxlength="100" required>
-      </mat-form-field>
+          <mat-form-field>
+            <mat-label>Ház rövid neve (azonosító)</mat-label>
+            <input matInput formControlName="shortHouseName" maxlength="20" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Ház neve</mat-label>
+            <input matInput formControlName="houseName" maxlength="20" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Irányítószám</mat-label>
+            <input matInput [textMask]="{mask: postCodeMask}" formControlName="postCode">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Város</mat-label>
+            <input matInput formControlName="city" maxlength="40" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Utca, házszám</mat-label>
+            <input matInput formControlName="strata" maxlength="100" required>
+          </mat-form-field>
         </div>
         <div fxLayout="column" fxLayoutGap="20px">
-        <mat-form-field>
-        <mat-label>Helyrajzi szám</mat-label>
-        <input matInput formControlName="locationNr" maxlength="20" required>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Adószám</mat-label>
-        <input matInput [textMask]="{mask: taxNumPattern}" formControlName="taxNum" required>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Üzemelt.Banksz.Listán</mat-label>
-        <input matInput formControlName="bankAccountNr" [textMask]="{mask: bankAccountPattern}" required>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Össz négyzetméter/tulajdoni hányad</mat-label>
-        <input matInput formControlName="areaOwnerShip" type="number" maxlength="7" minlength="1" required>
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Kettős könyvitel</mat-label>
-        <input matInput formControlName="dualAccounting" required>
-      </mat-form-field>
+          <mat-form-field>
+            <mat-label>Helyrajzi szám</mat-label>
+            <input matInput formControlName="locationNr" maxlength="20">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Adószám</mat-label>
+            <input matInput [textMask]="{mask: taxNumPattern}" formControlName="taxNum">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Üzemelt.Banksz.Listán</mat-label>
+            <input matInput formControlName="bankAccountNr" [textMask]="{mask: bankAccountPattern}" required>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Össz négyzetméter/tulajdoni hányad</mat-label>
+            <input matInput formControlName="areaOwnerShip" type="number" maxlength="7" minlength="1" required>
+          </mat-form-field>
+          <mat-checkbox formControlName="dualAccounting">
+            <mat-label>Kettős könyvitel</mat-label>
+          </mat-checkbox>
         </div>
       </div>
       <div>
@@ -72,14 +71,14 @@
             <mat-label>Összegarányos csekkdíj</mat-label>
             <input matInput formControlName="proportionalCheqFee">
           </mat-form-field>
-        <mat-form-field>
+          <mat-form-field>
             <mat-label>Csekkdíj emelés hónapja</mat-label>
             <input matInput formControlName="chequeFeeLiftingMonth" required>
           </mat-form-field>
         </div>
         <div fxLayout="column" fxLayoutGap="20px">
 
-        <mat-form-field>
+          <mat-form-field>
             <mat-label>Emelt csekkdíj</mat-label>
             <input matInput formControlName="raisedChequeFee" required>
           </mat-form-field>
@@ -104,7 +103,7 @@
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Törzsek beállítása</ng-template>
       <div fxLayout="row" fxLayoutGap="20px">
-      <div fxLayout="column" fxLayoutGap="20px">
+        <div fxLayout="column" fxLayoutGap="20px">
           <mat-form-field>
             <mat-label>Vevőtörzs engedélyezése</mat-label>
             <input matInput formControlName="enablingCustomerTrunk"
