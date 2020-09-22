@@ -56,8 +56,8 @@
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Könyvelési adatok</ng-template>
-      <div fxLayout="row">
-        <div fxLayout="column">
+      <div fxLayout="row" fxLayoutGap="100px">
+        <div fxLayout="column" fxLayoutGap="20px">
           <mat-form-field>
             <mat-label>Könyvelés kezdő hónapja</mat-label>
             <mat-select  formControlName="accountancyStartDate" disableRipple>
@@ -107,7 +107,7 @@
           </mat-checkbox>
           </div>
         </div>
-        <div fxLayout="column">
+        <div fxLayout="column" fxLayoutGap="20px">
           <mat-form-field>
             <mat-label>Emelt csekkdíj</mat-label>
             <input matInput placeholder="0 esetén nincs" formControlName="raisedChequeFee" required>
