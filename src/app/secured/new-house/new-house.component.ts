@@ -86,12 +86,14 @@ export class NewHouseComponent implements OnInit {
 
 
   save() {
-    const result = Object.assign({},
-      this.firstFormGroup.value,
-      this.secondFormGroup.value,
-      this.thirdFormGroup.value,
-      this.fourthFormGroup.value);
-    this.newHouseService.save(result).subscribe();
+    if (this.firstFormGroup.valid && this.secondFormGroup.valid && this.thirdFormGroup.valid && this.fourthFormGroup.valid) {
+      const result = Object.assign({},
+        this.firstFormGroup.value,
+        this.secondFormGroup.value,
+        this.thirdFormGroup.value,
+        this.fourthFormGroup.value);
+      this.newHouseService.save(result).subscribe();
+    }
   }
 
 }
