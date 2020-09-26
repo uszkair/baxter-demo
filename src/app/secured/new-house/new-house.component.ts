@@ -91,7 +91,10 @@ export class NewHouseComponent implements OnInit {
         this.secondFormGroup.value,
         this.thirdFormGroup.value,
         this.fourthFormGroup.value);
-      this.newHouseService.save(result).subscribe();
+      this.newHouseService.save(result)
+        .subscribe(()=>{
+          this.dialogRef.close();
+        });
     }
   }
 

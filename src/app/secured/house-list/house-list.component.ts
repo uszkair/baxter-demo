@@ -44,5 +44,9 @@ export class HouseListComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(NewHouseComponent, {
       width: '100%'
     });
+    dialogRef.afterClosed().subscribe(() => {
+      this.loadHouses();
+    });
   }
+
 }
