@@ -23,7 +23,6 @@ export class NewHouseComponent implements OnInit {
 
   local_data: any;
   postCodeMask = Patterns.POSTCODE;
-  taxNumPattern = Patterns.TAXNUM;
   bankAccountPattern = Patterns.BANKACCOUNT;
 
   constructor(private _formBuilder: FormBuilder,
@@ -44,18 +43,18 @@ export class NewHouseComponent implements OnInit {
       strata: [null, Validators.required],
       locationNr: [null],
       taxNum: [null],
-      bankAccountNr: [null, Validators.required],
+      bankAccountNum: [null, Validators.required],
       areaOwnerShip: [null],
       dualAccounting: [null],
     });
     this.secondFormGroup = this._formBuilder.group({
       accountancyStartDate: ['Jan', Validators.required],
       chequeFee: [0, Validators.required],
-      proportionalCheqFee: [0, Validators.required],
+      proportionalCheqFee: [null, Validators.required],
       chequeFeeLiftingMonth: [null, Validators.required],
       refusedChFeeLiftingMonth: [null],
-      raisedChequeFee: [0, Validators.required],
-      bankCachPaymentFee: [0, Validators.required],
+      raisedChequeFee: [null, Validators.required],
+      bankCachPaymentFee: [null, Validators.required],
       handledInvoice: [null, Validators.required],
     });
     this.thirdFormGroup = this._formBuilder.group({

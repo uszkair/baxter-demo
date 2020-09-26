@@ -1,0 +1,15 @@
+<form id="form" [formGroup]="formGroup">
+  <mat-form-field>
+  <mat-label>Adószám</mat-label>
+  <input
+    (input)="onChange($event.target.value)"
+    (blur)="transformTaxNum($event.target?.value)"
+    matInput [textMask]="{mask: taxNumPattern}"
+    pattern="^(\d{7})(\d)\-([1-5])\-(0[2-9]|[13][0-9]|2[02-9]|4[0-4]|51)$"
+    formControlName="taxNum"
+    required>
+    <mat-error *ngIf="taxNum.hasError('pattern')">
+      Kérem érvényes adószámot adjon meg
+    </mat-error>
+  </mat-form-field>
+</form>

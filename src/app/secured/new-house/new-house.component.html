@@ -30,14 +30,8 @@
             <mat-label>Helyrajzi szám</mat-label>
             <input matInput formControlName="locationNr" maxlength="20">
           </mat-form-field>
-          <mat-form-field>
-            <mat-label>Adószám</mat-label>
-            <input matInput [textMask]="{mask: taxNumPattern}" formControlName="taxNum">
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Üzemelt.Banksz.Listán</mat-label>
-            <input matInput formControlName="bankAccountNr" [textMask]="{mask: bankAccountPattern}" required>
-          </mat-form-field>
+          <app-tax-num formControlName="taxNum"></app-tax-num>
+          <app-bank-account formControlName="bankAccountNum"></app-bank-account>
           <mat-form-field>
             <mat-label>Össz négyzetméter/tulajdoni hányad</mat-label>
             <input matInput formControlName="areaOwnerShip" type="number" maxlength="7" minlength="1" required>
@@ -110,11 +104,11 @@
         <div fxLayout="column" fxLayoutGap="20px">
           <mat-form-field>
             <mat-label>Emelt csekkdíj</mat-label>
-            <input matInput placeholder="0 esetén nincs" formControlName="raisedChequeFee" required>
+            <input matInput placeholder="0 esetén nincs" formControlName="raisedChequeFee" type="number" required>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Banki készpénzbefizetés díja</mat-label>
-            <input matInput placeholder="0 esetén nincs" formControlName="bankCachPaymentFee" required>
+            <input matInput placeholder="0 esetén nincs" formControlName="bankCachPaymentFee" type="number" required>
           </mat-form-field>
           <mat-checkbox  formControlName="handledInvoice">
             <mat-label>Csak folyamatos teljesítésű számlákat könyvel?</mat-label>

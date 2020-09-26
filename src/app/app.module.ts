@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {APP_INITIALIZER, NgModule} from '@angular/core';
+import {APP_INITIALIZER, forwardRef, NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -18,7 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, NG_VALUE_ACCESSOR, ReactiveFormsModule} from '@angular/forms';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HomeComponent} from './home/home.component';
 import {LoginComponent} from './login/login.component';
@@ -33,6 +33,9 @@ import { NewHouseComponent } from './secured/new-house/new-house.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {TextMaskModule} from 'angular2-text-mask';
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { TaxNumComponent } from './shared/tax-num/tax-num.component';
+import {MatFormFieldControl} from "@angular/material/form-field";
+import { BankAccountComponent } from './shared/bank-account/bank-account.component';
 
 
 @NgModule({
@@ -44,7 +47,9 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     DashboardComponent,
     LeftSideNavComponent,
     HouseListComponent,
-    NewHouseComponent
+    NewHouseComponent,
+    TaxNumComponent,
+    BankAccountComponent
   ],
   imports: [
     HttpClientModule,
