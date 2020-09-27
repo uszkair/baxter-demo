@@ -26,17 +26,20 @@ import {AdminComponent} from './secured/admin/admin.component';
 import {AuthInterceptor} from './shared/interceptors/auth-interceptor';
 import {DashboardComponent} from './secured/dashboard/dashboard.component';
 import {BasicHttpInterceptor} from './shared/interceptors/basic-http.interceptor';
-import {LeftSideNavComponent} from './secured/left-side-nav/left-side-nav.component';
 import {HouseListComponent} from './secured/house-list/house-list.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {NewHouseComponent} from './secured/new-house/new-house.component';
 import {MatStepperModule} from '@angular/material/stepper';
 import {TextMaskModule} from 'angular2-text-mask';
-import {MatCheckboxModule} from "@angular/material/checkbox";
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import {TaxNumComponent} from './shared/tax-num/tax-num.component';
 import {BankAccountComponent} from './shared/bank-account/bank-account.component';
-import {MatPaginatorModule} from "@angular/material/paginator";
-import {MatSortModule} from "@angular/material/sort";
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from "@angular/material/list";
+import {NavSideComponent} from './shared/nav-side/nav-side.component';
+import {HouseDashboardComponent} from './shared/house-dashboard/house-dashboard.component';
 
 
 @NgModule({
@@ -46,11 +49,12 @@ import {MatSortModule} from "@angular/material/sort";
     LoginComponent,
     AdminComponent,
     DashboardComponent,
-    LeftSideNavComponent,
     HouseListComponent,
     NewHouseComponent,
     TaxNumComponent,
-    BankAccountComponent
+    BankAccountComponent,
+    NavSideComponent,
+    HouseDashboardComponent
   ],
   imports: [
     HttpClientModule,
@@ -77,7 +81,9 @@ import {MatSortModule} from "@angular/material/sort";
     MatStepperModule,
     TextMaskModule,
     MatCheckboxModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatListModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

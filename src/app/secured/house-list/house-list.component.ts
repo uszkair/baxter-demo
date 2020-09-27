@@ -2,10 +2,11 @@ import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {HouseListService} from './house-list.service';
 import {House} from '../../models/House';
 import {MatTableDataSource} from '@angular/material/table';
-import {MatDialog} from "@angular/material/dialog";
-import {NewHouseComponent} from "../new-house/new-house.component";
-import {MatPaginator} from "@angular/material/paginator";
-import {MatSort} from "@angular/material/sort";
+import {MatDialog} from '@angular/material/dialog';
+import {NewHouseComponent} from '../new-house/new-house.component';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort} from '@angular/material/sort';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-house-list',
@@ -13,13 +14,14 @@ import {MatSort} from "@angular/material/sort";
   styleUrls: ['./house-list.component.scss']
 })
 export class HouseListComponent implements OnInit, AfterViewInit {
-  public displayedColumns = ['houseName', 'postCode', 'strata'];
+  public displayedColumns = ['houseName', 'postCode', 'strata', 'actions'];
   public dataSource = new MatTableDataSource<any>();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private houseService: HouseListService,
+              private router: Router,
               public dialog: MatDialog) {
   }
 
@@ -48,5 +50,10 @@ export class HouseListComponent implements OnInit, AfterViewInit {
       this.loadHouses();
     });
   }
+
+  enter(id){
+   this.router.navigate(['house', id, 'details']);
+  }
+
 
 }
