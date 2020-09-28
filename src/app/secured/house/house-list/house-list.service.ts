@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {House} from '../../models/House';
+import {House} from '../../../models/House';
 
 
 const GET_HOUSE_LIST = '/houses/all';

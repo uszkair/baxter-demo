@@ -1,4 +1,4 @@
-import {Component, forwardRef, OnInit, ViewChild} from '@angular/core';
+import {Component, forwardRef, ViewChild} from '@angular/core';
 import {Patterns} from '../helpers/patterns';
 import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {MatInput} from '@angular/material/input';
@@ -7,11 +7,13 @@ import {MatInput} from '@angular/material/input';
   selector: 'app-bank-account',
   templateUrl: './bank-account.component.html',
   styleUrls: ['./bank-account.component.scss'],
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => BankAccountComponent),
-    multi: true
-  }]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => BankAccountComponent),
+      multi: true
+    }
+  ]
 })
 export class BankAccountComponent implements ControlValueAccessor {
 

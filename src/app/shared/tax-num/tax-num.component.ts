@@ -1,24 +1,19 @@
-import {
-  Component, ElementRef, forwardRef, HostBinding, Injector, Input, OnDestroy, OnInit, Optional, Self,
-  ViewChild
-} from '@angular/core';
-import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, NgControl, Validators} from '@angular/forms';
-import {MatFormField, MatFormFieldControl} from '@angular/material/form-field';
-import {Subject} from 'rxjs/index';
-import {FocusMonitor} from '@angular/cdk/a11y';
-import {coerceBooleanProperty} from '@angular/cdk/coercion';
+import {Component, forwardRef, ViewChild} from '@angular/core';
+import {ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators} from '@angular/forms';
 import {MatInput} from '@angular/material/input';
-import {Patterns} from "../helpers/patterns";
+import {Patterns} from '../helpers/patterns';
 
 @Component({
   selector: 'app-tax-num',
   templateUrl: './tax-num.component.html',
   styleUrls: ['./tax-num.component.scss'],
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => TaxNumComponent),
-    multi: true
-  }]
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => TaxNumComponent),
+      multi: true
+    }
+  ]
 })
 export class TaxNumComponent implements ControlValueAccessor {
 
@@ -28,7 +23,7 @@ export class TaxNumComponent implements ControlValueAccessor {
   taxNumPattern = Patterns.TAXNUM;
 
   private onChangeCallback: (_: any) => void = (_: any) => {
-  };
+  }
 
   constructor(private fb: FormBuilder) {
     this.createForm();
@@ -47,9 +42,9 @@ export class TaxNumComponent implements ControlValueAccessor {
   }
 
   onChange: any = () => {
-  };
+  }
   onTouched: any = () => {
-  };
+  }
 
   registerOnChange(fn: any) {
     this.onChangeCallback = fn;
@@ -60,8 +55,8 @@ export class TaxNumComponent implements ControlValueAccessor {
   }
 
   writeValue(value: any) {
-    if(value){
-      //todo kötöjelessé tenni
+    if (value){
+      // todo kötöjelessé tenni
     }
 
   }

@@ -1,9 +1,9 @@
 import {Component, Inject, OnInit, Optional} from '@angular/core';
-import {House} from '../../models/House';
+import {House} from '../../../models/House';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
-import {Patterns} from '../../shared/helpers/patterns';
+import {Patterns} from '../../../shared/helpers/patterns';
 import {NewHouseService} from "./new-house.service";
 
 @Component({

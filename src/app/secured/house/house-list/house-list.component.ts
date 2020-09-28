@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {HouseListService} from './house-list.service';
-import {House} from '../../models/House';
+import {House} from '../../../models/House';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import {NewHouseComponent} from '../new-house/new-house.component';
