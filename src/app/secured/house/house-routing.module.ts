@@ -11,7 +11,6 @@ const routes: Routes = [
       {path: 'overview', component: HouseOverviewComponent}
     ], component: HouseDashboardComponent, canActivate: [AuthGuardService]
   },
-
 ];
 
 @NgModule({

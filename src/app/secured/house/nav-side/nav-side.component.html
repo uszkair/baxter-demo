@@ -6,8 +6,8 @@
     <span class="menu-spacer"></span>
   </mat-toolbar-row>
 </mat-toolbar>
-<mat-sidenav-container>
-  <mat-sidenav #sidenav>
+<mat-sidenav-container autosize>
+  <mat-sidenav #sidenav position="start" mode="side" opened="true">
     <mat-nav-list>
       <a mat-list-item [routerLink]="['overview']">Áttekintés</a>
     </mat-nav-list>
