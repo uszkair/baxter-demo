@@ -5,8 +5,12 @@ import {HouseDashboardComponent} from './house-dashboard/house-dashboard.compone
 import {HouseOverviewComponent} from './overview/overview.component';
 
 const routes: Routes = [
-  { path: 'overview', component: HouseOverviewComponent, outlet: 'sidebar' , canActivate: [ AuthGuardService ] },
-  { path: 'house/:id/details', component: HouseDashboardComponent, canActivate: [AuthGuardService] },
+  {
+    path: 'house/:id/details',
+    children: [
+      {path: 'overview', component: HouseOverviewComponent}
+    ], component: HouseDashboardComponent, canActivate: [AuthGuardService]
+  },
 
 ];
 
@@ -14,4 +18,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HouseRoutingModule { }
+export class HouseRoutingModule {
+}
