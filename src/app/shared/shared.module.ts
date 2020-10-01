@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatOptionModule} from '@angular/material/core';
@@ -14,14 +13,12 @@ import {MatTableModule} from '@angular/material/table';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
-import {SharedRoutingModule} from './shared-routing.module';
 import {TaxNumComponent} from './tax-num/tax-num.component';
 import {BankAccountComponent} from './bank-account/bank-account.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TextMaskModule} from 'angular2-text-mask';
 import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatStepperModule} from '@angular/material/stepper';
@@ -38,7 +35,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   exports: [
     TaxNumComponent,
     BankAccountComponent,
-    BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
@@ -65,8 +61,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatListModule
   ],
   imports: [
-    CommonModule,
-    BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
@@ -90,8 +84,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    MatListModule,
-    SharedRoutingModule
+    MatListModule
   ]
 })
 

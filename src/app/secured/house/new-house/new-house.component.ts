@@ -74,13 +74,13 @@ export class NewHouseComponent implements OnInit {
     this.secondFormGroup.get('refusedChFeeLiftingMonth')
       .valueChanges
       .subscribe((value) => {
-        if(value){
+        if (value) {
           this.secondFormGroup.get('chequeFeeLiftingMonth').patchValue(null);
           this.secondFormGroup.get('chequeFeeLiftingMonth').disable();
-        }else {
+        } else {
           this.secondFormGroup.get('chequeFeeLiftingMonth').enable();
         }
-    });
+      });
   }
 
 
@@ -92,7 +92,7 @@ export class NewHouseComponent implements OnInit {
         this.thirdFormGroup.value,
         this.fourthFormGroup.value);
       this.newHouseService.save(result)
-        .subscribe(()=>{
+        .subscribe(() => {
           this.dialogRef.close();
         });
     }
