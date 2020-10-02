@@ -1,5 +1,4 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {HouseListService} from './house-list.service';
 import {House} from '../../../models/House';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
@@ -7,6 +6,7 @@ import {NewHouseComponent} from '../new-house/new-house.component';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {Router} from "@angular/router";
+import {HouseService} from "../house.service";
 
 @Component({
   selector: 'app-house-list',
@@ -20,7 +20,7 @@ export class HouseListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private houseService: HouseListService,
+  constructor(private houseService: HouseService,
               private router: Router,
               public dialog: MatDialog) {
   }

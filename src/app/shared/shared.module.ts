@@ -25,6 +25,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {CommonModule} from "@angular/common";
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     BankAccountComponent
   ],
   exports: [
+    CommonModule,
     TaxNumComponent,
     BankAccountComponent,
     FlexLayoutModule,
