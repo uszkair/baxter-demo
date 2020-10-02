@@ -6,6 +6,7 @@ import {HouseDashboardComponent} from './house-dashboard/house-dashboard.compone
 import {NewHouseComponent} from './new-house/new-house.component';
 import {HouseListComponent} from './house-list/house-list.component';
 import {HouseRoutingModule} from './house-routing.module';
+import {MasterDataComponent} from './master-data/master-data.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {HouseRoutingModule} from './house-routing.module';
     HouseListComponent,
     NewHouseComponent,
     HouseDashboardComponent,
-    HouseOverviewComponent],
+    HouseOverviewComponent,
+    MasterDataComponent],
   imports: [
     HouseRoutingModule,
     SharedModule
