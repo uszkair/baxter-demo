@@ -14,26 +14,51 @@
 
       <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
         <span class="full-width" *ngIf="isExpanded || isShowing">Törzsadatok</span>
-        <mat-icon mat-list-icon>home</mat-icon>
-        <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>
+        <mat-icon mat-list-icon>folder_shared</mat-icon>
+        <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubmenu}" *ngIf="isExpanded || isShowing">
+          expand_more
+        </mat-icon>
       </mat-list-item>
       <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
-        <a mat-list-item [routerLink]="['sub-deposit-management']">Albetétkezelés</a>
-        <a mat-list-item [routerLink]="['analytics-body']">Analitika törzs</a>
-        <a mat-list-item [routerLink]="['customer-base']">Vevő törzs</a>
-        <a mat-list-item [routerLink]="['supplier-base']">Szállító törzs</a>
-        <a mat-list-item [routerLink]="['pay-office']">Bank, pénztár</a>
-        <a mat-list-item [routerLink]="['main-meters']">Fő mérőórák</a>
-        <a mat-list-item [routerLink]="['mail-body']">Levél törzs</a>
-        <a mat-list-item [routerLink]="['albete-group']">Albetét csoportok</a>
-
+        <a mat-list-item [routerLink]="['sub-deposit-management']">
+          <span matLine>Albetétkezelés</span>
+          <mat-icon mat-list-icon>read_more</mat-icon>
+        </a>
+        <a mat-list-item [routerLink]="['analytics-body']">
+          <span matLine>Analitika törzs</span>
+          <mat-icon mat-list-icon>read_more</mat-icon>
+        </a>
+        <a mat-list-item [routerLink]="['customer-base']">
+          <span matLine>Vevő törzs</span>
+          <mat-icon mat-list-icon>read_more</mat-icon>
+        </a>
+        <a mat-list-item [routerLink]="['supplier-base']">
+          <span matLine>Szállító törzs</span>
+          <mat-icon mat-list-icon>read_more</mat-icon>
+        </a>
+        <a mat-list-item [routerLink]="['pay-office']">
+          <span matLine>Bank, pénztár</span>
+          <mat-icon mat-list-icon>read_more</mat-icon>
+        </a>
+        <a mat-list-item [routerLink]="['main-meters']">
+          <span matLine>Fő mérőórák</span>
+          <mat-icon mat-list-icon>read_more</mat-icon>
+        </a>
+        <a mat-list-item [routerLink]="['mail-body']">
+          <span matLine>Levél törzs</span>
+          <mat-icon mat-list-icon>read_more</mat-icon>
+        </a>
+        <a mat-list-item [routerLink]="['albete-group']">
+          <span matLine>Albetét csoportok</span>
+          <mat-icon mat-list-icon>read_more</mat-icon>
+        </a>
         <!--<mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent">-->
-          <!--<span class="full-width" *ngIf="isExpanded || isShowing">Nested Menu</span>-->
-          <!--<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>-->
+        <!--<span class="full-width" *ngIf="isExpanded || isShowing">Nested Menu</span>-->
+        <!--<mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}" *ngIf="isExpanded || isShowing">expand_more</mat-icon>-->
         <!--</mat-list-item>-->
         <!--<div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || isExpanded">-->
-          <!--<mat-list-item>SubSubmenu Item 1</mat-list-item>-->
-          <!--<mat-list-item>SubSubmenu Item 2</mat-list-item>-->
+        <!--<mat-list-item>SubSubmenu Item 1</mat-list-item>-->
+        <!--<mat-list-item>SubSubmenu Item 2</mat-list-item>-->
         <!--</div>-->
       </div>
     </mat-nav-list>
