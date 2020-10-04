@@ -10,8 +10,10 @@
   <mat-sidenav class="nav-sidenav" #sidenav position="start" mode="side" opened="true"
                (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['overview']">Áttekintés</a>
-
+      <a mat-list-item [routerLink]="['overview']">
+        <span matLine>Áttekintés</span>
+        <mat-icon mat-list-icon>pageview</mat-icon>
+      </a>
       <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
         <span class="full-width" *ngIf="isExpanded || isShowing">Törzsadatok</span>
         <mat-icon mat-list-icon>folder_shared</mat-icon>
