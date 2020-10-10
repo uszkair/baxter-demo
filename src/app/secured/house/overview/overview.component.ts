@@ -18,9 +18,9 @@ export class HouseOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.actRoute.parent.paramMap.pipe(
+    this.actRoute.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.houseService.getHouseById(params.get('id')))
+        this.houseService.getHouseByUUID(params.get('uuid')))
     ).subscribe(house => {
       this.houseDTO = house;
     });

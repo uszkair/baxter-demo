@@ -9,7 +9,7 @@ import {PersistenceService} from "angular-persistence";
 export class HouseService {
 
   static GET_HOUSE_LIST = '/house/all';
-  static GET_HOUSE_BY_ID = '/house'
+  static GET_HOUSE_BY_UUID = '/house'
   static NEW_HOUSE_SAVE = '/house';
 
   static HOUSE_ARRAY = 'houses';
@@ -22,10 +22,10 @@ export class HouseService {
     return this.http.get<House[]>(HouseService.GET_HOUSE_LIST);
   }
 
-  getHouseById(id) {
+  getHouseByUUID(uuid) {
     let params = new HttpParams();
-    params = params.set('id', id);
-    return this.http.get<House>(HouseService.GET_HOUSE_BY_ID, {params: params});
+    params = params.set('uuid', uuid);
+    return this.http.get<House>(HouseService.GET_HOUSE_BY_UUID, {params: params});
   }
 
   update(house: House): House[] {

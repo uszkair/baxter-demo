@@ -14,9 +14,9 @@ import {AlbeteGroupComponent} from "./albete-group/albete-group.component";
 
 const routes: Routes = [
   {
-    path: 'house/:id',
+    path: 'house/:uuid',
     children: [
-      {path: 'overview', component: HouseOverviewComponent},
+      {path: 'overview/:uuid', component: HouseOverviewComponent},
       {path: 'sub-deposit-management', component: SubDepositManagementComponent},
       {path: 'analytics-body', component: AnalyticsBodyComponent},
       {path: 'customer-base', component: CustomerBaseComponent},

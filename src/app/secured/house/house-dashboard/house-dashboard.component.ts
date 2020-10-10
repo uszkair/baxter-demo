@@ -12,7 +12,6 @@ import {HouseService} from "../house.service";
 export class HouseDashboardComponent implements OnInit {
 
   selected = new FormControl(0);
-
   houses;
 
   constructor(private actRoute: ActivatedRoute,
@@ -22,7 +21,7 @@ export class HouseDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.actRoute.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.houseService.getHouseById(params.get('id')))
+        this.houseService.getHouseByUUID(params.get('uuid')))
     ).subscribe(house => {
       this.houses = this.houseService.update(house);
     });
