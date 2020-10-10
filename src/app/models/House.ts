@@ -1,4 +1,5 @@
 export class House {
+  uuid: string; // egyedi objektum azonosito
   shortHouseName: string; // Ház rövid neve (azonosító)
   houseName: string; // Ház neve
   postCode: string; // Irányítószám

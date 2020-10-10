@@ -14,7 +14,6 @@ import {BasicHttpInterceptor} from './shared/interceptors/basic-http.interceptor
 import {SharedModule} from './shared/shared.module';
 import {HouseModule} from './secured/house/house.module';
 import {BrowserModule} from "@angular/platform-browser";
-import {CommonModule} from "@angular/common";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
@@ -29,7 +28,6 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
   imports: [
     AppRoutingModule,
     HouseModule,
-    CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,

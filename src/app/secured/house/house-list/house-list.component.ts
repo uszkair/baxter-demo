@@ -52,6 +52,6 @@ export class HouseListComponent implements OnInit, AfterViewInit {
   }
 
   enter(id){
-   this.router.navigate(['house', id, 'details']);
+   this.router.navigate(['house', id]);
   }
 }

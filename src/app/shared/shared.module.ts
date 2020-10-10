@@ -26,7 +26,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {CommonModule} from "@angular/common";
-
+import {MatTabsModule} from "@angular/material/tabs";
+import {PersistenceModule} from "angular-persistence";
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {CommonModule} from "@angular/common";
     MatSortModule,
     MatInputModule,
     MatCardModule,
+    MatTabsModule,
     MatMenuModule,
     MatIconModule,
     MatFormFieldModule,
@@ -60,9 +62,11 @@ import {CommonModule} from "@angular/common";
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    PersistenceModule
   ],
   imports: [
+    CommonModule,
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
@@ -76,6 +80,7 @@ import {CommonModule} from "@angular/common";
     MatFormFieldModule,
     MatButtonModule,
     MatTableModule,
+    MatTabsModule,
     MatDividerModule,
     MatSlideToggleModule,
     MatSelectModule,
@@ -86,7 +91,8 @@ import {CommonModule} from "@angular/common";
     MatCheckboxModule,
     MatProgressSpinnerModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    PersistenceModule
   ]
 })
 

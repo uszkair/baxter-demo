@@ -4,7 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {Patterns} from '../../../shared/helpers/patterns';
-import {NewHouseService} from "./new-house.service";
+import {HouseService} from "../house.service";
 
 @Component({
   selector: 'app-new-house',
@@ -28,7 +28,7 @@ export class NewHouseComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
               public dialogRef: MatDialogRef<NewHouseComponent>,
               @Optional() @Inject(MAT_DIALOG_DATA) public data: House,
-              private newHouseService: NewHouseService) {
+              private newHouseService: HouseService) {
     console.log(data);
     this.local_data = data;
   }
