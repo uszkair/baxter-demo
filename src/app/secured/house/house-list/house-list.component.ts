@@ -1,12 +1,13 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {House} from '../../../models/House';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import {NewHouseComponent} from '../new-house/new-house.component';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
-import {Router} from "@angular/router";
-import {HouseService} from "../house.service";
+import {Router} from '@angular/router';
+import {HouseService} from '../house.service';
+import {HouseDataService} from '../house-data.service';
+import {map} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-house-list',
@@ -22,6 +23,7 @@ export class HouseListComponent implements OnInit, AfterViewInit {
 
   constructor(private houseService: HouseService,
               private router: Router,
+              private houseDataService: HouseDataService,
               public dialog: MatDialog) {
   }
 
@@ -36,10 +38,18 @@ export class HouseListComponent implements OnInit, AfterViewInit {
   }
 
   loadHouses() {
-    this.houseService.getData()
-      .subscribe((houses: House[]) => {
-        this.dataSource.data = houses;
-      });
+
+     this.houseDataService.houses.pipe(
+       map(data => this.dataSource.data = data),
+     ).subscribe()
+
+     this.houseDataService.loadAll();
+
+
+    // this.houseService.getData()
+    //   .subscribe((houses: House[]) => {
+    //     this.dataSource.data = houses;
+    //   });
   }
 
   openDialog() {
