@@ -11,23 +11,25 @@ export class HouseDataService {
   static BASE_HOUSE_URL = '/house';
 
   private _housesSub = new BehaviorSubject<House[]>([]);
-  private dataStore: { houses: House[] } = { houses: [] };
+  private dataStore: { houses: House[] } = {houses: []};
   readonly houses = this._housesSub.asObservable();
 
   constructor(private http: HttpClient) {
   }
+
   loadAll() {
-    this.http.get<House[]>(HouseDataService.GET_HOUSE_LIST).subscribe(
-      data => {
-        this.dataStore.houses = data;
-        this._housesSub.next(Object.assign({}, this.dataStore).houses);
-      },
-      error => console.log('Could not load houses.')
-    );
+
+    this.http.get<House[]>(HouseDataService.GET_HOUSE_LIST)
+      .pipe().subscribe( (data: House[]) => {
+      this.dataStore.houses = data;
+      this._housesSub.next(Object.assign({}, this.dataStore).houses);
+    });
   }
 
   load(uuid: number | string) {
-    this.http.get<House>(`${HouseDataService.BASE_HOUSE_URL}/${uuid}`).subscribe(
+    this.http.get<House>(`${HouseDataService.BASE_HOUSE_URL}/${uuid}`)
+      .pipe()
+      .subscribe(
       data => {
         let notFound = true;
 
@@ -43,38 +45,32 @@ export class HouseDataService {
         }
 
         this._housesSub.next(Object.assign({}, this.dataStore).houses);
-      },
-      error => console.log('Could not load house.')
-    );
+      });
   }
 
 
   create(house: House) {
     this.http
       .post<House>(`${HouseDataService.BASE_HOUSE_URL}`, JSON.stringify(house))
-      .subscribe(
-        data => {
-          this.dataStore.houses.push(data);
-          this._housesSub.next(Object.assign({}, this.dataStore).houses);
-        },
-        error => console.log('Could not create house.')
-      );
+      .pipe()
+      .subscribe((data: House) => {
+        this.dataStore.houses.push(data);
+        this._housesSub.next(Object.assign({}, this.dataStore).houses);
+      });
   }
 
   update(house: House) {
     this.http
       .put<House>(`${HouseDataService.BASE_HOUSE_URL}/${house.uuid}`, JSON.stringify(house))
-      .subscribe(
-        data => {
-          this.dataStore.houses.forEach((t, i) => {
-            if (t.uuid === data.uuid) {
-              this.dataStore.houses[i] = data;
-            }
-          });
-          this._housesSub.next(Object.assign({}, this.dataStore).houses);
-        },
-        error => console.log('Could not update house.')
-      );
+      .pipe()
+      .subscribe((data: House) => {
+      this.dataStore.houses.forEach((t, i) => {
+        if (t.uuid === data.uuid) {
+          this.dataStore.houses[i] = data;
+        }
+      });
+      this._housesSub.next(Object.assign({}, this.dataStore).houses);
+    });
   }
 
   // remove(uuid: number) {
