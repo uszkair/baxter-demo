@@ -11,14 +11,14 @@ export class HouseDataService {
   static BASE_HOUSE_URL = '/house';
 
   private _housesSub = new BehaviorSubject<House[]>([]);
-  private dataStore: { houses: House[] } = {houses: []};
   readonly houses = this._housesSub.asObservable();
+
+  private dataStore: { houses: House[] } = {houses: []};
 
   constructor(private http: HttpClient) {
   }
 
   loadAll() {
-
     this.http.get<House[]>(HouseDataService.GET_HOUSE_LIST)
       .pipe().subscribe( (data: House[]) => {
       this.dataStore.houses = data;

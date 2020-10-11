@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap} from '@angular/router';
+import {ActivatedRoute} from '@angular/router';
 import {House} from '../../../models/House';
 import {HouseService} from '../house.service';
-import {switchMap} from 'rxjs/internal/operators';
 
 @Component({
   selector: 'app-house-overview',
@@ -18,12 +17,12 @@ export class HouseOverviewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.actRoute.paramMap.pipe(
-      switchMap((params: ParamMap) =>
-        this.houseService.getHouseByUUID(params.get('uuid')))
-    ).subscribe(house => {
-      this.houseDTO = house;
-    });
+    // this.actRoute.paramMap.pipe(
+    //   switchMap((params: ParamMap) =>
+    //     this.houseService.getHouseByUUID(params.get('uuid')))
+    // ).subscribe(house => {
+    //   this.houseDTO = house;
+    // });
   }
 
 }

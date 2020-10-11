@@ -5,7 +5,6 @@ import {NewHouseComponent} from '../new-house/new-house.component';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {Router} from '@angular/router';
-import {HouseService} from '../house.service';
 import {HouseDataService} from '../house-data.service';
 import {map} from 'rxjs/internal/operators';
 
@@ -21,8 +20,7 @@ export class HouseListComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private houseService: HouseService,
-              private router: Router,
+  constructor(private router: Router,
               private houseDataService: HouseDataService,
               public dialog: MatDialog) {
   }
@@ -34,31 +32,20 @@ export class HouseListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.loadHouses();
-  }
+    this.houseDataService.houses.pipe(
+      map(data => this.dataSource.data = data),
+    ).subscribe();
 
-  loadHouses() {
-
-     this.houseDataService.houses.pipe(
-       map(data => this.dataSource.data = data),
-     ).subscribe()
-
-     this.houseDataService.loadAll();
-
-
-    // this.houseService.getData()
-    //   .subscribe((houses: House[]) => {
-    //     this.dataSource.data = houses;
-    //   });
+    this.houseDataService.loadAll();
   }
 
   openDialog() {
     const dialogRef = this.dialog.open(NewHouseComponent, {
       width: '100%'
     });
-    dialogRef.afterClosed().subscribe(() => {
-      this.loadHouses();
-    });
+    // dialogRef.afterClosed().subscribe(() => {
+    //   this.loadHouses();
+    // });
   }
 
   enter(uuid){

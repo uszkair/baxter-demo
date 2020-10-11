@@ -4,7 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import {Patterns} from '../../../shared/helpers/patterns';
-import {HouseService} from "../house.service";
+import {HouseDataService} from "../house-data.service";
 
 @Component({
   selector: 'app-new-house',
@@ -28,7 +28,7 @@ export class NewHouseComponent implements OnInit {
   constructor(private _formBuilder: FormBuilder,
               public dialogRef: MatDialogRef<NewHouseComponent>,
               @Optional() @Inject(MAT_DIALOG_DATA) public data: House,
-              private newHouseService: HouseService) {
+              private houseDataService: HouseDataService) {
     console.log(data);
     this.local_data = data;
   }
@@ -91,10 +91,10 @@ export class NewHouseComponent implements OnInit {
         this.secondFormGroup.value,
         this.thirdFormGroup.value,
         this.fourthFormGroup.value);
-      this.newHouseService.save(result)
-        .subscribe(() => {
-          this.dialogRef.close();
-        });
+      this.houseDataService.create(result);
+        // .subscribe(() => {
+        //   this.dialogRef.close();
+        // });
     }
   }
 
