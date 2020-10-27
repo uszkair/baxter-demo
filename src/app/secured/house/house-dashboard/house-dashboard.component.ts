@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from "@angular/forms";
-import {ActivatedRoute, ParamMap} from "@angular/router";
-import {HouseDataService} from "../house-data.service";
+import {FormControl} from '@angular/forms';
+import {ActivatedRoute, ParamMap} from '@angular/router';
+import {HouseDataService} from '../house-data.service';
+import {House} from '../../../models/House';
+import {map, switchMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-house-dashboard',
@@ -10,24 +12,20 @@ import {HouseDataService} from "../house-data.service";
 })
 export class HouseDashboardComponent implements OnInit {
 
-  selected = new FormControl(0);
-  houses: any[];
+  selected = new FormControl();
+  houses: House[];
+  selectedIndex: number;
 
   constructor(private actRoute: ActivatedRoute,
               private houseDataService: HouseDataService) {
   }
 
   ngOnInit(): void {
-
-    this.houseDataService.houses.subscribe(
-      data => this.houses = data
-    );
-
+    this.houses = this.houseDataService.housesDS.houses;
     this.actRoute.paramMap.subscribe(
       (params: ParamMap) =>
-        this.houseDataService.load(params.get('uuid'))
+        this.selectedIndex = +params.get('index')
     );
   }
 
 }
-

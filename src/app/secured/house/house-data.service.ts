@@ -2,75 +2,75 @@ import {Injectable} from '@angular/core';
 import {House} from '../../models/House';
 import {HttpClient} from '@angular/common/http';
 import {BehaviorSubject} from 'rxjs/Rx';
+import {map} from 'rxjs/operators';
+import {Observable, of, ReplaySubject} from 'rxjs';
+import {PersistenceService} from 'angular-persistence';
+
+const SELECTED_HOUSES = 'HOUSES';
+const GET_HOUSE_LIST = '/house/all';
+const BASE_HOUSE_URL = '/house';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HouseDataService {
-  static GET_HOUSE_LIST = '/house/all';
-  static BASE_HOUSE_URL = '/house';
-
-  private _housesSub = new BehaviorSubject<House[]>([]);
-  readonly houses = this._housesSub.asObservable();
 
   private dataStore: { houses: House[] } = {houses: []};
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,
+              private persistenceService: PersistenceService) {
+
+    if (!this.persistenceService.get(SELECTED_HOUSES)){
+      this.persistenceService.set(SELECTED_HOUSES, this.dataStore);
+    }
   }
 
   loadAll() {
-    this.http.get<House[]>(HouseDataService.GET_HOUSE_LIST)
-      .pipe().subscribe( (data: House[]) => {
-      this.dataStore.houses = data;
-      this._housesSub.next(Object.assign({}, this.dataStore).houses);
+    return this.http.get<House[]>(GET_HOUSE_LIST);
+  }
+
+  load(house: House): Observable<any>{
+    let notFound = true;
+    let selectedIndex = 0;
+
+    this.dataStore = this.persistenceService.get(SELECTED_HOUSES);
+
+    this.dataStore.houses.forEach((item, index) => {
+      if (item.uuid === house.uuid) {
+        selectedIndex = index;
+        this.dataStore.houses[index] = house;
+        notFound = false;
+      }
     });
+    if (notFound) {
+      this.dataStore.houses.push(house);
+      selectedIndex = this.dataStore.houses.length - 1;
+    }
+    this.persistenceService.set(SELECTED_HOUSES, this.dataStore);
+    return of(selectedIndex);
   }
-
-  load(uuid: number | string) {
-    this.http.get<House>(`${HouseDataService.BASE_HOUSE_URL}/${uuid}`)
-      .pipe()
-      .subscribe(
-      data => {
-        let notFound = true;
-
-        this.dataStore.houses.forEach((item, index) => {
-          if (item.uuid === data.uuid) {
-            this.dataStore.houses[index] = data;
-            notFound = false;
-          }
-        });
-
-        if (notFound) {
-          this.dataStore.houses.push(data);
-        }
-
-        this._housesSub.next(Object.assign({}, this.dataStore).houses);
-      });
-  }
-
 
   create(house: House) {
     this.http
-      .post<House>(`${HouseDataService.BASE_HOUSE_URL}`, JSON.stringify(house))
-      .pipe()
-      .subscribe((data: House) => {
-        this.dataStore.houses.push(data);
-        this._housesSub.next(Object.assign({}, this.dataStore).houses);
-      });
+      .post<House>(`${BASE_HOUSE_URL}`, JSON.stringify(house));
+  }
+
+
+  get housesDS() {
+    return this.dataStore;
   }
 
   update(house: House) {
-    this.http
-      .put<House>(`${HouseDataService.BASE_HOUSE_URL}/${house.uuid}`, JSON.stringify(house))
-      .pipe()
-      .subscribe((data: House) => {
-      this.dataStore.houses.forEach((t, i) => {
-        if (t.uuid === data.uuid) {
-          this.dataStore.houses[i] = data;
-        }
-      });
-      this._housesSub.next(Object.assign({}, this.dataStore).houses);
-    });
+    return this.http
+      .post<House>(`${BASE_HOUSE_URL}`, JSON.stringify(house))
+      .pipe(
+        map(data => {
+          this.dataStore.houses.forEach((t, i) => {
+            if (t.uuid === data.uuid) {
+              this.dataStore.houses[i] = data;
+            }
+          });
+        }));
   }
 
   // remove(uuid: number) {
@@ -87,8 +87,4 @@ export class HouseDataService {
   //     error => console.log('Could not delete house.')
   //   );
   // }
-
-  get housesSub() {
-    return this._housesSub.asObservable();
-  }
 }

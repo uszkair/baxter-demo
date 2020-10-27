@@ -6,7 +6,8 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {Router} from '@angular/router';
 import {HouseDataService} from '../house-data.service';
-import {map} from 'rxjs/internal/operators';
+import {map, switchMap} from 'rxjs/internal/operators';
+import {House} from '../../../models/House';
 
 @Component({
   selector: 'app-house-list',
@@ -32,11 +33,10 @@ export class HouseListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
-    this.houseDataService.houses.pipe(
+    this.houseDataService.loadAll().pipe(
       map(data => this.dataSource.data = data),
     ).subscribe();
 
-    this.houseDataService.loadAll();
   }
 
   openDialog() {
@@ -48,7 +48,11 @@ export class HouseListComponent implements OnInit, AfterViewInit {
     // });
   }
 
-  enter(uuid){
-   this.router.navigate(['house', uuid]);
+  enter(house: House) {
+    this.houseDataService
+      .load(house)
+      .pipe(
+        switchMap((index) => this.router.navigate(['house', index]))
+      ).subscribe();
   }
 }

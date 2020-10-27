@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
+import {House} from "../../../models/House";
 
 @Component({
   selector: 'app-nav-side',
@@ -12,9 +13,6 @@ export class NavSideComponent implements OnInit {
   showSubmenu = false;
   isShowing = false;
   showSubSubMenu = false;
-
-  @Input()
-  uuid;
 
   ngOnInit(): void {
   }
