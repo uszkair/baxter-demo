@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {House} from "../../../models/House";
 
 @Component({
   selector: 'app-customer-base',
@@ -7,6 +8,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class CustomerBaseComponent implements OnInit {
 
+  @Input()
+  house: House;
   constructor() { }
 
   ngOnInit(): void {

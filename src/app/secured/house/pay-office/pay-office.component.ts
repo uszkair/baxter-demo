@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {House} from "../../../models/House";
 
 @Component({
   selector: 'app-pay-office',
@@ -6,6 +7,9 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./pay-office.component.scss']
 })
 export class PayOfficeComponent implements OnInit {
+
+  @Input()
+  house: House;
 
   constructor() { }
 

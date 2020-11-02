@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {House} from "../../../models/House";
 
 @Component({
   selector: 'app-mail-body',
@@ -6,6 +7,9 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./mail-body.component.scss']
 })
 export class MailBodyComponent implements OnInit {
+
+  @Input()
+  house: House;
 
   constructor() { }
 

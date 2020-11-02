@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {House} from "../../../models/House";
 
 @Component({
   selector: 'app-objective-tool',
@@ -6,6 +7,9 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./objective-tool.component.scss']
 })
 export class ObjectiveToolComponent implements OnInit {
+
+  @Input()
+  house: House;
 
   constructor() { }
 

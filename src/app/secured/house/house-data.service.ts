@@ -6,7 +6,7 @@ import {map} from 'rxjs/operators';
 import {Observable, of, ReplaySubject} from 'rxjs';
 import {PersistenceService} from 'angular-persistence';
 
-const SELECTED_HOUSES = 'HOUSES';
+const ADDED_HOUSES = 'HOUSES';
 const GET_HOUSE_LIST = '/house/all';
 const BASE_HOUSE_URL = '/house';
 
@@ -17,12 +17,19 @@ export class HouseDataService {
 
   private dataStore: { houses: House[] } = {houses: []};
 
+  private houseSub = new BehaviorSubject<House>(null);
+  readonly selectedHouse$ = this.houseSub.asObservable();
+
   constructor(private http: HttpClient,
               private persistenceService: PersistenceService) {
 
-    if (!this.persistenceService.get(SELECTED_HOUSES)){
-      this.persistenceService.set(SELECTED_HOUSES, this.dataStore);
+    if (!this.persistenceService.get(ADDED_HOUSES)){
+      this.persistenceService.set(ADDED_HOUSES, this.dataStore);
     }
+  }
+
+  getHouse(uuid){
+    return this.http.get<House>(`${BASE_HOUSE_URL}?uuid=${uuid}`);
   }
 
   loadAll() {
@@ -33,7 +40,7 @@ export class HouseDataService {
     let notFound = true;
     let selectedIndex = 0;
 
-    this.dataStore = this.persistenceService.get(SELECTED_HOUSES);
+    this.dataStore = this.persistenceService.get(ADDED_HOUSES);
 
     this.dataStore.houses.forEach((item, index) => {
       if (item.uuid === house.uuid) {
@@ -46,7 +53,9 @@ export class HouseDataService {
       this.dataStore.houses.push(house);
       selectedIndex = this.dataStore.houses.length - 1;
     }
-    this.persistenceService.set(SELECTED_HOUSES, this.dataStore);
+    this.persistenceService.set(ADDED_HOUSES, this.dataStore);
+    this.houseSub.next(house);
+
     return of(selectedIndex);
   }
 
@@ -54,7 +63,6 @@ export class HouseDataService {
     this.http
       .post<House>(`${BASE_HOUSE_URL}`, JSON.stringify(house));
   }
-
 
   get housesDS() {
     return this.dataStore;

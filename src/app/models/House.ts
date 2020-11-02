@@ -1,4 +1,4 @@
-export class House {
+export interface House {
 
   uuid: string; // egyedi objektum azonosito
   shortHouseName: string; // Ház rövid neve (azonosító)

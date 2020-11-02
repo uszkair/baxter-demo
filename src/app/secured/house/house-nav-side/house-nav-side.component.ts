@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatSidenav} from '@angular/material/sidenav';
-import {House} from "../../../models/House";
+import {ActivatedRoute, Router} from '@angular/router';
+import {House} from '../../../models/House';
 
 @Component({
   selector: 'app-nav-side',
@@ -13,6 +14,14 @@ export class NavSideComponent implements OnInit {
   showSubmenu = false;
   isShowing = false;
   showSubSubMenu = false;
+
+  selected = 'overview';
+
+  @Input()
+  house: House;
+
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
   }

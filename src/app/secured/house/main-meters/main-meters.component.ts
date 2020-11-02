@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {House} from "../../../models/House";
 
 @Component({
   selector: 'app-main-meters',
@@ -6,6 +7,9 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./main-meters.component.scss']
 })
 export class MainMetersComponent implements OnInit {
+
+  @Input()
+  house: House;
 
   constructor() { }
 

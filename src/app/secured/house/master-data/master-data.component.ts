@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {House} from "../../../models/House";
 
 @Component({
   selector: 'app-master-data',
@@ -6,6 +7,9 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./master-data.component.scss']
 })
 export class MasterDataComponent implements OnInit {
+
+  @Input()
+  house: House;
 
   constructor() { }
 
