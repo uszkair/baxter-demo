@@ -2,12 +2,15 @@ package hu.baxter.demo.comparators;
 
 import hu.baxter.demo.models.EmployeeDTO;
 
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Objects;
-import java.util.StringTokenizer;
-import java.util.function.Function;
 
+/**
+ * Order employee list by Name attribute. It is divided by firstname and lastname
+ *
+ * @author robi
+ *
+ */
 public class SortedByName implements Comparator<EmployeeDTO> {
 
     @Override

@@ -19,6 +19,13 @@ public class EmployeesController {
         this.employeeService = employeeService;
     }
 
+    /**
+     *
+     *  Return all or filtered employees which are ordered by firstname and lastname.
+     *
+     * @param department filter to the employee list
+     * @return filtered list by department
+     */
     @GetMapping("/employees")
     public List<EmployeeDTO> employees(@RequestParam(required = false) Optional<String> department) {
 
@@ -35,6 +42,12 @@ public class EmployeesController {
 
     }
 
+    /**
+     *
+     *  Return employees group by department.
+     *
+     * @return
+     */
     @GetMapping("/employees/groupby/department")
     public Object employeesGroupByDepartment() {
         return employeeService.list()

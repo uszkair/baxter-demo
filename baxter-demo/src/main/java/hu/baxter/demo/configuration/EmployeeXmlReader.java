@@ -14,10 +14,16 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
 
-
 @Configuration
 public class EmployeeXmlReader {
 
+    /**
+     * Read employees from a XML file which is on the classpath.
+     *
+     *
+     * @return a list of employees
+     * @throws Exception while xml processing
+     */
     @Bean
     public List<EmployeeDTO> employeeDTOList() throws Exception {
         InputStream is = new BufferedInputStream(new FileInputStream(ResourceUtils.getFile("classpath:templates/employee.xml")));

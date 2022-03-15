@@ -19,6 +19,12 @@ public class EmployeeXmlReaderTest {
     @Autowired
     private EmployeeXmlReader employeeXmlReader;
 
+
+    /**
+     * Test {@link EmployeeXmlReader} xml loaded, file exists
+     *
+     * @throws Exception
+     */
     @Test
     public void testXmlAttribute() throws Exception {
         Path relPath = Paths.get("src", "test", "resources","templates", "employee.xml");
@@ -32,6 +38,12 @@ public class EmployeeXmlReaderTest {
         assertTrue(true);
     }
 
+    /**
+     *
+     * If the {@link EmployeeXmlReader} works whether I get 10 items from the XML file.
+     *
+     * @throws Exception
+     */
     @Test
     public void testEmployeeXmlReader() throws Exception {
         assertFalse(employeeXmlReader.employeeDTOList().isEmpty());

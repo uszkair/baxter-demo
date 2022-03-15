@@ -31,6 +31,12 @@ public class EmployeeControllerTest {
     }
 
 
+    /**
+     *
+     * Test {@link EmployeeService}: list size, element contains
+     *
+     * @throws Exception
+     */
     @Test
     public void employees() throws Exception {
 
@@ -49,6 +55,12 @@ public class EmployeeControllerTest {
                 .andExpect(jsonPath("$.[?(@.name == \"Samuel Palmisano\" && @.department == \"finance\")]").exists());
 
      }
+    /**
+     *
+     * Test {@link EmployeeService}: list size, element contains, filtered by department
+     *
+     * @throws Exception
+     */
     @Test
     public void employeesWithDepartment() throws Exception {
         when(employeeService.list())
