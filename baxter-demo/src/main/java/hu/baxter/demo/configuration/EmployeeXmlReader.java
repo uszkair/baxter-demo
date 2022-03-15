@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 
 import org.springframework.util.ResourceUtils;
 
-import javax.management.modelmbean.XMLParseException;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;

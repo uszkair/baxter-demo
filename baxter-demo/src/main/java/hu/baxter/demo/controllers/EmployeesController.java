@@ -1,7 +1,6 @@
 package hu.baxter.demo.controllers;
 
-import hu.baxter.demo.comparators.DepartmentAndNameSort;
-import hu.baxter.demo.comparators.NameSort;
+import hu.baxter.demo.comparators.SortedByName;
 import hu.baxter.demo.models.EmployeeDTO;
 import hu.baxter.demo.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +25,12 @@ public class EmployeesController {
         if (department.isPresent()) {
             return employeeService.list().stream()
                     .filter(employeeDTO -> employeeDTO.getDepartment().equals(department.get()))
-                    .sorted(new NameSort())
+                    .sorted(new SortedByName())
                     .collect(Collectors.toList());
         }
         return employeeService.list()
                 .stream()
-                .sorted(new NameSort())
+                .sorted(new SortedByName())
                 .collect(Collectors.toList());
 
     }

@@ -2,10 +2,13 @@ package hu.baxter.demo.comparators;
 
 import hu.baxter.demo.models.EmployeeDTO;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Objects;
+import java.util.StringTokenizer;
+import java.util.function.Function;
 
-public class DepartmentAndNameSort implements Comparator<EmployeeDTO> {
+public class SortedByName implements Comparator<EmployeeDTO> {
 
     @Override
     public int compare(EmployeeDTO o1, EmployeeDTO o2) {
@@ -16,13 +19,8 @@ public class DepartmentAndNameSort implements Comparator<EmployeeDTO> {
         String o2FirstName = o2.getName().split(" ")[0];
         String o2LastName = o2.getName().split(" ")[1];
 
-        int result = Objects.compare(o1.getDepartment(), o2.getDepartment(), Comparator.naturalOrder());
 
-        if (result != 0) {
-            return result;
-        }
-
-        result = Objects.compare(o1FirstName, o2FirstName, Comparator.naturalOrder());
+        int result = Objects.compare(o1FirstName, o2FirstName, Comparator.naturalOrder());
 
         if (result != 0) {
             return result;
