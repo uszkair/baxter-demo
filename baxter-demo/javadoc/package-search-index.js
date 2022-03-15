@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"hu.baxter.demo"},{"l":"hu.baxter.demo.comparators"},{"l":"hu.baxter.demo.configuration"},{"l":"hu.baxter.demo.controllers"},{"l":"hu.baxter.demo.exceptions"},{"l":"hu.baxter.demo.models"},{"l":"hu.baxter.demo.services"}];updateSearchResults();
