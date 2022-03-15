@@ -1,8 +1,0 @@
-<mat-tab-group [selectedIndex]="selectedIndex"
-               (selectedIndexChange)="selectedIndexChange($event)">
-  <div *ngFor="let house of houses; let index">
-      <mat-tab [label]="house.shortHouseName">
-        <app-nav-side [house]="house"></app-nav-side>
-      </mat-tab>
-  </div>
-</mat-tab-group>
