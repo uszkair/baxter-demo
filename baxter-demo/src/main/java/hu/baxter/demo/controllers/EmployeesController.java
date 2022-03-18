@@ -4,12 +4,14 @@ import hu.baxter.demo.comparators.SortedByName;
 import hu.baxter.demo.models.EmployeeDTO;
 import hu.baxter.demo.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-@RestController("/rest")
+@RestController
+@RequestMapping("/rest")
 public class EmployeesController {
 
     private EmployeeService employeeService;
@@ -26,7 +28,7 @@ public class EmployeesController {
      * @param department filter to the employee list
      * @return filtered list by department
      */
-    @GetMapping("/employees")
+    @GetMapping(path = "/employees", produces= MediaType.APPLICATION_JSON_VALUE)
     public List<EmployeeDTO> employees(@RequestParam(required = false) Optional<String> department) {
 
         if (department.isPresent()) {
@@ -48,7 +50,7 @@ public class EmployeesController {
      *
      * @return
      */
-    @GetMapping("/employees/groupby/department")
+    @GetMapping(path="/employees/groupby/department", produces= MediaType.APPLICATION_JSON_VALUE)
     public Object employeesGroupByDepartment() {
         return employeeService.list()
                 .stream()
