@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity>
+    <entityName>Delivery</entityName>
+    <comment>Szállító törzs</comment>
+    <fields>
+        <field>
+            <fieldName>code</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Kód</comment>
+        </field>
+        <field>
+            <fieldName>name</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Szállító neve</comment>
+        </field>
+        <field>
+            <fieldName>postCode</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Írányítószám</comment>
+        </field>
+        <field>
+            <fieldName>city</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Város</comment>
+        </field>
+        <field>
+            <fieldName>address</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Utca, házszám</comment>
+        </field>
+        <field>
+            <fieldName>bankAccount</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Bankszámlaszám</comment>
+        </field>
+        <field>
+            <fieldName>taxNr</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Adószám</comment>
+        </field>
+        <field>
+            <fieldName>isKATA</fieldName>
+            <fieldType>Boolean</fieldType>
+            <comment>Kisadozó (KATA) -e</comment>
+        </field>
+        <field>
+            <fieldName>defaultSum</fieldName>
+            <fieldType>Long</fieldType>
+            <comment>Alapértelmezett összeg könyveléskor</comment>
+        </field>
+        <field>
+            <fieldName>contact</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Kapcsolattartó</comment>
+        </field>
+        <field>
+            <fieldName>email</fieldName>
+            <fieldType>String</fieldType>
+            <comment>E-mail</comment>
+        </field>
+        <field>
+            <fieldName>phone</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Telefonszám</comment>
+        </field>
+        <field>
+            <fieldName>house</fieldName>
+            <fieldType>House</fieldType>
+            <dtoType>HouseDTO</dtoType>
+            <idName>house_id</idName>
+            <comment>Ház</comment>
+        </field>
+    </fields>
+</entity>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity>
+    <entityName>Customer</entityName>
+    <comment>Vevő törzs</comment>
+    <fields>
+        <field>
+            <fieldName>code</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Kód</comment>
+        </field>
+        <field>
+            <fieldName>name</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Vevő neve</comment>
+        </field>
+        <field>
+            <fieldName>postCode</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Irányítószám</comment>
+        </field>
+        <field>
+            <fieldName>city</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Város</comment>
+        </field>
+        <field>
+            <fieldName>street</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Utca, házszám</comment>
+        </field>
+        <field>
+            <fieldName>szja</fieldName>
+            <fieldType>String</fieldType>
+            <comment>SZJA</comment>
+        </field>
+        <field>
+            <fieldName>tax</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Adószám</comment>
+        </field>
+        <field>
+            <fieldName>emails</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Email címek</comment>
+        </field>
+        <field>
+            <fieldName>paymentMethod</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Fizetési mód</comment>
+        </field>
+        <field>
+            <fieldName>defaultLeftDays</fieldName>
+            <fieldType>Long</fieldType>
+            <comment>Alapértelmezett halasztási nap</comment>
+        </field>
+    </fields>
+</entity>

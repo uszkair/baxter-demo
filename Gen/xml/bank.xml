@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity>
+    <entityName>Bank</entityName>
+    <comment>Bank</comment>
+    <fields>
+        <field>
+            <fieldName>code</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Kód</comment>
+        </field>
+        <field>
+            <fieldName>shortName</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Rövid név</comment>
+        </field>
+        <field>
+            <fieldName>bankName</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Név</comment>
+        </field>
+        <field>
+            <fieldName>bankAccount</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Bankszámlaszám</comment>
+        </field>
+        <field>
+            <fieldName>balance</fieldName>
+            <fieldType>Long</fieldType>
+            <comment>Egyenleg</comment>
+        </field>
+        <field>
+            <fieldName>startBalance</fieldName>
+            <fieldType>Long</fieldType>
+            <comment>Nyitó egyenleg</comment>
+        </field>
+        <field>
+            <fieldName>house</fieldName>
+            <fieldType>House</fieldType>
+            <dtoType>HouseDTO</dtoType>
+            <idName>house_id</idName>
+            <comment>Ház</comment>
+        </field>
+    </fields>
+</entity>

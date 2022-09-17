@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity>
+    <entityName>Analytics</entityName>
+    <comment>Analitikák</comment>
+    <fields>
+        <field>
+            <fieldName>code</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Kód</comment>
+        </field>
+        <field>
+            <fieldName>name</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Megnevezés</comment>
+        </field>
+        <field>
+            <fieldName>type</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Megnevezés</comment>
+        </field>
+    </fields>
+</entity>

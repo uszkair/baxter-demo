@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity>
+    <entityName>SubjectDeviceList</entityName>
+    <comment>Tárgyi eszközlista</comment>
+    <fields>
+        <field>
+            <fieldName>designation</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Megnevezés</comment>
+        </field>
+        <field>
+            <fieldName>purchaseValue</fieldName>
+            <fieldType>Long</fieldType>
+            <comment>Tárgyi eszköz vásárlási érték</comment>
+        </field>
+        <field>
+            <fieldName>sellingValue</fieldName>
+            <fieldType>Long</fieldType>
+            <comment>Tárgyi eszköz eladási érték</comment>
+        </field>
+        <field>
+            <fieldName>sellingDate</fieldName>
+            <fieldType>Date</fieldType>
+            <comment>Tárgyi eszköz eladási dátum</comment>
+        </field>
+        <field>
+            <fieldName>purchaseDate</fieldName>
+            <fieldType>Date</fieldType>
+            <comment>Tárgyi eszköz vásárlási dátum</comment>
+        </field>
+        <field>
+            <fieldName>comment</fieldName>
+            <fieldType>String</fieldType>
+            <comment>Megjegyzés</comment>
+        </field>
+        <field>
+            <fieldName>house</fieldName>
+            <fieldType>House</fieldType>
+            <dtoType>HouseDTO</dtoType>
+            <idName>house_id</idName>
+            <comment>Ház</comment>
+        </field>
+    </fields>
+</entity>
